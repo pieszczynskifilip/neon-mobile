@@ -27,15 +27,30 @@ body{min-height:100vh;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bot
 .system{padding:14px}.systemRow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px}.systemRow:last-child{border-bottom:0}.systemRow span:last-child{color:var(--muted);text-align:right}
 .bottom{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,transparent,#071014 35%)}.nav{max-width:760px;margin:auto;background:#0b151a;border:1px solid var(--line);border-radius:18px;padding:8px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.nav a,.nav button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:11px;padding:10px 4px;border-radius:12px;text-decoration:none;text-align:center}.nav a.active{background:#10252b;color:var(--cyan)}.nav button:disabled{opacity:.45}
 .footerNote{margin-top:14px;color:#5e7780;font-size:11px}
-.badge{max-width:112px;overflow:hidden;text-overflow:ellipsis}.card .sub{min-height:52px}</style>
+.badge{max-width:112px;overflow:hidden;text-overflow:ellipsis}.card .sub{min-height:52px}
+.cardActions{display:flex;gap:8px;margin-top:12px}
+.cardActions button,.cardActions a{flex:1;text-align:center;text-decoration:none;border:1px solid var(--line);background:#0b151a;color:var(--muted);padding:9px 8px;border-radius:11px;font-size:11px}
+.cardActions button.primary{color:var(--cyan);border-color:#24515a}
+.cardActions button.unset{opacity:.55}
+.linkSetup{all:unset;color:var(--cyan);cursor:pointer;font-size:11px}
+.modalBackdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:flex-end;z-index:50}
+.modalBackdrop.open{display:flex}
+.modal{width:100%;max-width:760px;margin:0 auto;background:#0b151a;border:1px solid var(--line);border-radius:22px 22px 0 0;padding:18px 16px calc(20px + env(safe-area-inset-bottom));max-height:82vh;overflow:auto}
+.modal h3{margin:0 0 6px;font-size:18px}.modal p{margin:0 0 16px;color:var(--muted);font-size:12px;line-height:1.45}
+.field{margin:12px 0}.field label{display:block;font-size:11px;color:#c8e7ec;letter-spacing:.08em;margin-bottom:6px}
+.field input{width:100%;background:#071014;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px;font-size:14px}
+.modalBtns{display:flex;gap:10px;margin-top:16px}.modalBtns button{flex:1;border:1px solid var(--line);border-radius:12px;padding:12px;background:#10242a;color:var(--text);font-weight:700}
+.modalBtns .save{color:var(--cyan);border-color:#24515a}
+.privacyNote{margin-top:12px;color:#5e7780;font-size:11px;line-height:1.45}
+</style>
 </head>
 <body>
 <main class="wrap">
 <div class="top"><div class="brand">NEON <span>// MOBILE</span></div><div class="meta"><span id="clock">--:--</span><br><span id="date">--</span></div></div>
 
 <section class="hero">
-<div class="eyebrow">NOW // v0.2 STATUS</div>
-<h1>System health + freshness.</h1>
+<div class="eyebrow">NOW // v0.3 LINKS</div>
+<h1>System + bezpośrednie wejścia do czatów.</h1>
 <p id="snapshotLine">Ładowanie statusów…</p>
 <div class="top3">
 <div class="priority"><div class="n">1</div><div><b id="top1">OPS</b><small id="top1s">—</small></div></div>
@@ -44,7 +59,7 @@ body{min-height:100vh;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bot
 </div>
 </section>
 
-<div class="sectionTitle" id="modules"><h2>MODULES</h2><span><button id="refreshBtn" style="all:unset;color:var(--cyan);cursor:pointer">↻ ODŚWIEŻ</button></span></div>
+<div class="sectionTitle" id="modules"><h2>MODULES</h2><span><button class="linkSetup" id="chatSetupBtn">⚙ CZATY</button> · <button id="refreshBtn" style="all:unset;color:var(--cyan);cursor:pointer">↻ ODŚWIEŻ</button></span></div>
 <section class="grid" id="moduleGrid"></section>
 
 <div class="sectionTitle" id="system"><h2>SYSTEM</h2><span id="systemStamp">health snapshot</span></div>
@@ -56,8 +71,22 @@ body{min-height:100vh;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bot
 <div class="systemRow"><span>Writeback</span><span id="sysWrite">—</span></div>
 <div class="systemRow"><span>Data sync</span><span id="sysSync">—</span></div>
 </section>
-<div class="footerNote">NEON Mobile v0.2 — freshness liczone lokalnie z ostatniego snapshotu. Prywatne arkusze nie są publikowane. Automatyczny sync źródeł będzie osobną warstwą.</div>
+<div class="footerNote">NEON Mobile v0.3 — freshness liczone lokalnie z ostatniego snapshotu. Prywatne arkusze nie są publikowane. Automatyczny sync źródeł będzie osobną warstwą.</div>
 </main>
+
+
+<div class="modalBackdrop" id="chatModal">
+  <div class="modal">
+    <h3>NEON // DIRECT CHAT LINKS</h3>
+    <p>Wklej adresy swoich rozmów ChatGPT. Zapisują się tylko lokalnie na tym iPhonie w localStorage — nie trafiają do publicznego repozytorium.</p>
+    <div id="chatFields"></div>
+    <div class="modalBtns">
+      <button id="cancelChatLinks">ANULUJ</button>
+      <button class="save" id="saveChatLinks">ZAPISZ LOKALNIE</button>
+    </div>
+    <div class="privacyNote">Używaj bezpośredniego adresu rozmowy z chatgpt.com. Nie używaj publicznego „Share link”, jeśli nie chcesz udostępniać rozmowy.</div>
+  </div>
+</div>
 
 <div class="bottom"><nav class="nav"><a class="active" href="#">HOME</a><button disabled>CAPTURE</button><a href="#modules">MODULES</a><a href="#system">SYSTEM</a></nav></div>
 
@@ -95,14 +124,37 @@ function fmtNext(iso){
   const d=new Date(iso);
   return d.toLocaleString('pl-PL',{weekday:'short',hour:'2-digit',minute:'2-digit'});
 }
+function getChatLinks(){
+  try{return JSON.parse(localStorage.getItem('neon_chat_links')||'{}')}catch(e){return {}}
+}
+function safeUrl(u){
+  if(!u) return '';
+  try{
+    const x=new URL(u);
+    if(x.protocol!=='https:') return '';
+    return x.href;
+  }catch(e){return ''}
+}
+function openChat(name){
+  const links=getChatLinks();
+  const u=safeUrl(links[name]);
+  if(u){ window.location.href=u; }
+  else { openChatSetup(name); }
+}
 function card(name,m){
   const f=freshness(m);
   const next=fmtNext(m.next_expected);
-  return `<a class="card" href="${m.source_url||'#'}" target="_blank" rel="noopener">
+  const links=getChatLinks();
+  const has=!!safeUrl(links[name]);
+  return `<div class="card">
     <div class="cardHead"><h3>${name}</h3><span class="badge ${f.cls}">${f.txt}</span></div>
     <div class="headline">${m.headline||'—'}</div>
     <div class="sub">${m.detail||''}${next?`<br>Następny: ${next}`:''}</div>
-  </a>`;
+    <div class="cardActions">
+      <button class="primary ${has?'':'unset'}" onclick="openChat('${name}')">${has?'OTWÓRZ CZAT':'USTAW CZAT'}</button>
+      <a href="${m.source_url||'#'}" target="_blank" rel="noopener">ŹRÓDŁO</a>
+    </div>
+  </div>`;
 }
 async function loadStatus(){
   const line=document.getElementById('snapshotLine');
@@ -129,6 +181,40 @@ async function loadStatus(){
 tick(); setInterval(tick,30000);
 loadStatus(); setInterval(loadStatus,60000);
 document.getElementById('refreshBtn').addEventListener('click',loadStatus);
+
+const CHAT_MODULES=['OPS','PRAWO','MARKET','RADAR','NAUKA','LAB','LOUNGE'];
+function renderChatFields(focusName){
+  const links=getChatLinks();
+  chatFields.innerHTML=CHAT_MODULES.map(n=>`
+    <div class="field">
+      <label>${n}</label>
+      <input data-chat="${n}" type="url" placeholder="https://chatgpt.com/c/..." value="${(links[n]||'').replace(/"/g,'&quot;')}">
+    </div>`).join('');
+  if(focusName){
+    const el=chatFields.querySelector(`[data-chat="${focusName}"]`);
+    if(el) setTimeout(()=>el.focus(),120);
+  }
+}
+function openChatSetup(focusName){
+  renderChatFields(focusName);
+  chatModal.classList.add('open');
+}
+function closeChatSetup(){chatModal.classList.remove('open')}
+function saveChatLinks(){
+  const out={};
+  chatFields.querySelectorAll('input[data-chat]').forEach(i=>{
+    const u=safeUrl(i.value.trim());
+    if(u) out[i.dataset.chat]=u;
+  });
+  localStorage.setItem('neon_chat_links',JSON.stringify(out));
+  closeChatSetup();
+  loadStatus();
+}
+chatSetupBtn.addEventListener('click',()=>openChatSetup());
+cancelChatLinks.addEventListener('click',closeChatSetup);
+saveChatLinks.addEventListener('click',saveChatLinks);
+chatModal.addEventListener('click',e=>{if(e.target===chatModal)closeChatSetup()});
+
 if('serviceWorker'in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js'))}
 </script>
 </body>

@@ -1,5 +1,5 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "snapshot_at": "2026-09-27T20:58:00+02:00",
   "modules": {
     "OPS": {
@@ -60,6 +60,6 @@
     "experiments": "2 planned",
     "writeback": "OFF",
     "delivery": "OPS push ON · MARKET/RADAR push OFF",
-    "sync_mode": "status.json snapshot"
+    "sync_mode": "status.json snapshot + local chat links"
   }
 }

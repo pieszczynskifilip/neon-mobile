@@ -1,18 +1,19 @@
-NEON Mobile v0.2
+NEON Mobile v0.3
 
-Co nowe:
-- dynamiczne badge freshness: NOW/FRESH/AGED/STALE/WEEKEND/PARTIAL
-- statusy modułów z pliku status.json
-- system health: automations / delivery / writeback / sync
-- przycisk odświeżenia
-- status.json omija cache service workera
+Nowe:
+- bezpośrednie przyciski OTWÓRZ CZAT dla modułów
+- konfiguracja adresów czatów z poziomu PWA: ⚙ CZATY
+- adresy są zapisywane wyłącznie lokalnie w localStorage na urządzeniu
+- linki do prywatnych rozmów NIE są publikowane w repo
+- osobny przycisk ŹRÓDŁO pozostaje do arkuszy/rejestrów
+- zachowane freshness + system health z v0.2
 
-Bezpieczeństwo:
-- nadal READ ONLY
-- brak tokenów, haseł i danych klientów
-- prywatne Google Sheets nie są publikowane
-- status.json jest sanitizowanym snapshotem
+Jak ustawić:
+1. W NEON kliknij ⚙ CZATY.
+2. Wklej bezpośrednie adresy rozmów chatgpt.com dla OPS/PRAWO/MARKET/RADAR/NAUKA/LAB/LOUNGE.
+3. Kliknij ZAPISZ LOKALNIE.
+4. Kafel pokaże OTWÓRZ CZAT.
 
-Uwaga:
-v0.2 liczy freshness na żywo, ale sam snapshot status.json nie synchronizuje się jeszcze automatycznie ze źródłami.
-To będzie kolejna warstwa.
+Prywatność:
+Nie używaj publicznych Share links do prywatnych rozmów. Najlepiej wklej bezpośredni adres rozmowy z paska przeglądarki.
+Repo pozostaje publiczne, ale chat links pozostają wyłącznie w localStorage telefonu.
