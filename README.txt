@@ -1,13 +1,18 @@
-NEON Mobile v0.1
-Read-only cockpit. Niczego nie nadpisuje.
+NEON Mobile v0.2
 
-Instalacja na iPhone:
-1. Umieść te pliki na statycznym hostingu HTTPS (np. GitHub Pages / Cloudflare Pages / Netlify).
-2. Otwórz adres w Chrome.
-3. Udostępnij → Dodaj do ekranu głównego.
+Co nowe:
+- dynamiczne badge freshness: NOW/FRESH/AGED/STALE/WEEKEND/PARTIAL
+- statusy modułów z pliku status.json
+- system health: automations / delivery / writeback / sync
+- przycisk odświeżenia
+- status.json omija cache service workera
 
-Roadmap:
-v0.1 read-only + linki
-v0.5 live statusy
-v1.0 capture + ograniczony writeback
-v2.0 AI router
+Bezpieczeństwo:
+- nadal READ ONLY
+- brak tokenów, haseł i danych klientów
+- prywatne Google Sheets nie są publikowane
+- status.json jest sanitizowanym snapshotem
+
+Uwaga:
+v0.2 liczy freshness na żywo, ale sam snapshot status.json nie synchronizuje się jeszcze automatycznie ze źródłami.
+To będzie kolejna warstwa.

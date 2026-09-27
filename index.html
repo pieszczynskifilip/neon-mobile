@@ -27,47 +27,108 @@ body{min-height:100vh;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bot
 .system{padding:14px}.systemRow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px}.systemRow:last-child{border-bottom:0}.systemRow span:last-child{color:var(--muted);text-align:right}
 .bottom{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,transparent,#071014 35%)}.nav{max-width:760px;margin:auto;background:#0b151a;border:1px solid var(--line);border-radius:18px;padding:8px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.nav a,.nav button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:11px;padding:10px 4px;border-radius:12px;text-decoration:none;text-align:center}.nav a.active{background:#10252b;color:var(--cyan)}.nav button:disabled{opacity:.45}
 .footerNote{margin-top:14px;color:#5e7780;font-size:11px}
-</style>
+.badge{max-width:112px;overflow:hidden;text-overflow:ellipsis}.card .sub{min-height:52px}</style>
 </head>
 <body>
 <main class="wrap">
 <div class="top"><div class="brand">NEON <span>// MOBILE</span></div><div class="meta"><span id="clock">--:--</span><br><span id="date">--</span></div></div>
-<section class="hero">
-<div class="eyebrow">NOW // READ ONLY</div>
-<h1>Twój system w jednym ekranie.</h1>
-<p>Snapshot + szybkie wejścia. Ta wersja niczego nie nadpisuje.</p>
-<div class="top3">
-<div class="priority"><div class="n">1</div><div><b>Morning Ops</b><small>TOP 3 + deadline watch</small></div></div>
-<div class="priority"><div class="n">2</div><div><b>Rynek tylko przy świeżym sygnale</b><small>US Desk / WTI / GOLD</small></div></div>
-<div class="priority"><div class="n">3</div><div><b>Jedna rzecz do zamknięcia</b><small>Bez dokładania backlogu bez potrzeby</small></div></div>
-</div></section>
 
-<div class="sectionTitle"><h2>MODULES</h2><span>tap → source</span></div>
-<section class="grid">
-<a class="card" href="https://docs.google.com/spreadsheets/d/12OEG8JGJZxe3qy4spe_yttGXYbmiprT4x54iYqKALYw/edit#gid=1555375527" target="_blank"><div class="cardHead"><h3>OPS</h3><span class="badge good">LIVE LINK</span></div><div class="headline">TOP 3 / deadlines</div><div class="sub">NEON Pulpit, Morning Ops, system status.</div></a>
-<a class="card" href="https://docs.google.com/spreadsheets/d/1Ocr8r_GfclJXj4PAKgTthOTKUmNPkQ3fOfqXUGagv7k/edit" target="_blank"><div class="cardHead"><h3>PRAWO</h3><span class="badge good">LIVE LINK</span></div><div class="headline">Sprawy / rejestr</div><div class="sub">Aktywne sprawy i statusy.</div></a>
-<a class="card" href="https://docs.google.com/spreadsheets/d/1DV5hGeBgH0OKWPHMVoycCNtXWp8KqmFwAFafNYeHWM8/edit" target="_blank"><div class="cardHead"><h3>MARKET</h3><span class="badge good">LIVE LINK</span></div><div class="headline">US100 / WTI / GOLD</div><div class="sub">Prediction Ledger, raporty i tezy ex ante.</div></a>
-<a class="card" href="https://docs.google.com/spreadsheets/d/12OEG8JGJZxe3qy4spe_yttGXYbmiprT4x54iYqKALYw/edit#gid=2120871162" target="_blank"><div class="cardHead"><h3>RADAR</h3><span class="badge">CHECKPOINT</span></div><div class="headline">Okazje / sygnały</div><div class="sub">Ostatnie przebiegi RADAR_1500.</div></a>
-<a class="card" href="https://docs.google.com/spreadsheets/d/12OEG8JGJZxe3qy4spe_yttGXYbmiprT4x54iYqKALYw/edit#gid=400459011" target="_blank"><div class="cardHead"><h3>NAUKA</h3><span class="badge warn">DAILY</span></div><div class="headline">Prawo + Swedish A1</div><div class="sub">Weekly Review i powtórki z realnej pracy.</div></a>
-<a class="card" href="https://docs.google.com/spreadsheets/d/12OEG8JGJZxe3qy4spe_yttGXYbmiprT4x54iYqKALYw/edit#gid=193580333" target="_blank"><div class="cardHead"><h3>LAB</h3><span class="badge">2 MAX</span></div><div class="headline">Eksperymenty</div><div class="sub">Hipoteza → test → keep / change / kill.</div></a>
+<section class="hero">
+<div class="eyebrow">NOW // v0.2 STATUS</div>
+<h1>System health + freshness.</h1>
+<p id="snapshotLine">Ładowanie statusów…</p>
+<div class="top3">
+<div class="priority"><div class="n">1</div><div><b id="top1">OPS</b><small id="top1s">—</small></div></div>
+<div class="priority"><div class="n">2</div><div><b id="top2">MARKET</b><small id="top2s">—</small></div></div>
+<div class="priority"><div class="n">3</div><div><b id="top3">RADAR</b><small id="top3s">—</small></div></div>
+</div>
 </section>
 
-<div class="sectionTitle"><h2>SYSTEM</h2><span>health snapshot</span></div>
+<div class="sectionTitle" id="modules"><h2>MODULES</h2><span><button id="refreshBtn" style="all:unset;color:var(--cyan);cursor:pointer">↻ ODŚWIEŻ</button></span></div>
+<section class="grid" id="moduleGrid"></section>
+
+<div class="sectionTitle" id="system"><h2>SYSTEM</h2><span id="systemStamp">health snapshot</span></div>
 <section class="system">
 <div class="systemRow"><span>Mode</span><span>LOW-COST / READ ONLY</span></div>
-<div class="systemRow"><span>Automations</span><span>4 active / limit 5</span></div>
-<div class="systemRow"><span>Experiments</span><span>2 active max</span></div>
-<div class="systemRow"><span>Writeback</span><span>OFF in v0.1</span></div>
-<div class="systemRow"><span>Refresh</span><span>manual links</span></div>
+<div class="systemRow"><span>Automations</span><span id="sysAuto">—</span></div>
+<div class="systemRow"><span>Experiments</span><span id="sysExp">—</span></div>
+<div class="systemRow"><span>Delivery</span><span id="sysDelivery">—</span></div>
+<div class="systemRow"><span>Writeback</span><span id="sysWrite">—</span></div>
+<div class="systemRow"><span>Data sync</span><span id="sysSync">—</span></div>
 </section>
-<div class="footerNote">NEON Mobile v0.1 — frontend przygotowany pod późniejsze live statusy, capture i writeback.</div>
+<div class="footerNote">NEON Mobile v0.2 — freshness liczone lokalnie z ostatniego snapshotu. Prywatne arkusze nie są publikowane. Automatyczny sync źródeł będzie osobną warstwą.</div>
 </main>
 
-<div class="bottom"><nav class="nav"><a class="active" href="#">HOME</a><button disabled>CAPTURE</button><a href="#modules">MODULES</a><a href="https://docs.google.com/spreadsheets/d/12OEG8JGJZxe3qy4spe_yttGXYbmiprT4x54iYqKALYw/edit#gid=1555375527" target="_blank">SYSTEM</a></nav></div>
+<div class="bottom"><nav class="nav"><a class="active" href="#">HOME</a><button disabled>CAPTURE</button><a href="#modules">MODULES</a><a href="#system">SYSTEM</a></nav></div>
 
 <script>
-function tick(){const n=new Date();clock.textContent=n.toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});date.textContent=n.toLocaleDateString('pl-PL',{weekday:'short',day:'2-digit',month:'2-digit'})}
-tick();setInterval(tick,30000);
+const ORDER=['OPS','PRAWO','MARKET','RADAR','NAUKA','LAB'];
+
+function tick(){
+  const n=new Date();
+  document.getElementById('clock').textContent=n.toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('date').textContent=n.toLocaleDateString('pl-PL',{weekday:'short',day:'2-digit',month:'2-digit'});
+}
+function ageText(iso){
+  if(!iso) return 'MANUAL';
+  const ms=Date.now()-new Date(iso).getTime();
+  const min=Math.max(0,Math.floor(ms/60000));
+  if(min<2) return 'NOW';
+  if(min<60) return `${min}m`;
+  const h=Math.floor(min/60);
+  if(h<24) return `${h}h`;
+  return `${Math.floor(h/24)}d`;
+}
+function freshness(m){
+  if(m.state==='MANUAL') return {txt:'MANUAL', cls:''};
+  if(m.state==='READY') return {txt:m.label||'READY', cls:'good'};
+  if(m.label==='WEEKEND') return {txt:'WEEKEND', cls:'warn'};
+  const a=m.last_run ? (Date.now()-new Date(m.last_run).getTime())/3600000 : 999;
+  if(m.state==='PARTIAL') return {txt:`PARTIAL · ${ageText(m.last_run)}`, cls:'warn'};
+  if(m.state==='WARN') return {txt:`WARN · ${ageText(m.last_run)}`, cls:'warn'};
+  if(a<=3) return {txt:`FRESH · ${ageText(m.last_run)}`, cls:'good'};
+  if(a<=12) return {txt:`AGED · ${ageText(m.last_run)}`, cls:'warn'};
+  return {txt:`STALE · ${ageText(m.last_run)}`, cls:'warn'};
+}
+function fmtNext(iso){
+  if(!iso) return '';
+  const d=new Date(iso);
+  return d.toLocaleString('pl-PL',{weekday:'short',hour:'2-digit',minute:'2-digit'});
+}
+function card(name,m){
+  const f=freshness(m);
+  const next=fmtNext(m.next_expected);
+  return `<a class="card" href="${m.source_url||'#'}" target="_blank" rel="noopener">
+    <div class="cardHead"><h3>${name}</h3><span class="badge ${f.cls}">${f.txt}</span></div>
+    <div class="headline">${m.headline||'—'}</div>
+    <div class="sub">${m.detail||''}${next?`<br>Następny: ${next}`:''}</div>
+  </a>`;
+}
+async function loadStatus(){
+  const line=document.getElementById('snapshotLine');
+  try{
+    const r=await fetch(`status.json?t=${Date.now()}`,{cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const data=await r.json();
+    const snap=new Date(data.snapshot_at);
+    line.textContent=`Snapshot ${snap.toLocaleString('pl-PL',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})} · freshness liczone teraz`;
+    document.getElementById('systemStamp').textContent=`v${data.version}`;
+    document.getElementById('moduleGrid').innerHTML=ORDER.map(k=>card(k,data.modules[k])).join('');
+    const s=data.system||{};
+    sysAuto.textContent=s.automations||'—'; sysExp.textContent=s.experiments||'—';
+    sysDelivery.textContent=s.delivery||'—'; sysWrite.textContent=s.writeback||'—'; sysSync.textContent=s.sync_mode||'—';
+    const ops=data.modules.OPS, market=data.modules.MARKET, radar=data.modules.RADAR;
+    top1.textContent=`OPS · ${freshness(ops).txt}`; top1s.textContent=ops.headline;
+    top2.textContent=`MARKET · ${freshness(market).txt}`; top2s.textContent=market.headline;
+    top3.textContent=`RADAR · ${freshness(radar).txt}`; top3s.textContent=radar.headline;
+  }catch(e){
+    line.textContent='STATUS UNAVAILABLE · użyj linków modułów';
+    document.getElementById('moduleGrid').innerHTML='<div class="card"><div class="headline">Brak status.json</div><div class="sub">Frontend działa, ale snapshot statusów nie został pobrany.</div></div>';
+  }
+}
+tick(); setInterval(tick,30000);
+loadStatus(); setInterval(loadStatus,60000);
+document.getElementById('refreshBtn').addEventListener('click',loadStatus);
 if('serviceWorker'in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js'))}
 </script>
 </body>
