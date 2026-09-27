@@ -11,211 +11,429 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>NEON Mobile</title>
 <style>
-:root{--bg:#071014;--panel:#0d171d;--line:#1e3640;--cyan:#4ff6ff;--mag:#ff4fd8;--text:#eafcff;--muted:#7e9aa4;--good:#8ef0b1;--warn:#ffd36a}
-*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif}
-body{min-height:100vh;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
-.wrap{max-width:760px;margin:auto;padding:18px 16px 110px}.top{display:flex;justify-content:space-between;align-items:flex-start;margin:8px 0 18px}
-.brand{font-weight:800;letter-spacing:.08em}.brand span{color:var(--cyan)}.meta{font-size:12px;color:var(--muted);text-align:right;line-height:1.5}
-.hero,.card,.system{background:var(--panel);border:1px solid var(--line);border-radius:20px}.hero{padding:18px;margin-bottom:16px}
-.eyebrow{font-size:11px;letter-spacing:.14em;color:var(--cyan);font-weight:700}.hero h1{font-size:24px;margin:8px 0 4px}.hero p{margin:0;color:var(--muted);font-size:14px}
-.top3{display:grid;gap:10px;margin-top:14px}.priority{display:flex;gap:10px;padding:12px;border-radius:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.04)}
-.n{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:#10242a;color:var(--cyan);font-weight:800;font-size:12px;flex:none}.priority b{display:block;font-size:14px}.priority small{color:var(--muted);font-size:12px}
-.sectionTitle{display:flex;justify-content:space-between;align-items:center;margin:22px 4px 10px}.sectionTitle h2{font-size:13px;letter-spacing:.12em;margin:0}.sectionTitle span{font-size:11px;color:var(--muted)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{display:block;text-decoration:none;color:inherit;padding:15px;min-height:140px}
-.cardHead{display:flex;justify-content:space-between;gap:8px;align-items:center}.card h3{margin:0;font-size:15px}.badge{font-size:10px;padding:4px 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}.badge.good{color:var(--good)}.badge.warn{color:var(--warn)}
-.headline{margin:18px 0 8px;font-size:17px;font-weight:750;line-height:1.15}.sub{font-size:12px;color:var(--muted);line-height:1.45}
-.system{padding:14px}.systemRow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px}.systemRow:last-child{border-bottom:0}.systemRow span:last-child{color:var(--muted);text-align:right}
-.bottom{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,transparent,#071014 35%)}.nav{max-width:760px;margin:auto;background:#0b151a;border:1px solid var(--line);border-radius:18px;padding:8px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.nav a,.nav button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:11px;padding:10px 4px;border-radius:12px;text-decoration:none;text-align:center}.nav a.active{background:#10252b;color:var(--cyan)}.nav button:disabled{opacity:.45}
-.footerNote{margin-top:14px;color:#5e7780;font-size:11px}
-.badge{max-width:112px;overflow:hidden;text-overflow:ellipsis}.card .sub{min-height:52px}
-.cardActions{display:flex;gap:8px;margin-top:12px}
-.cardActions button,.cardActions a{flex:1;text-align:center;text-decoration:none;border:1px solid var(--line);background:#0b151a;color:var(--muted);padding:9px 8px;border-radius:11px;font-size:11px}
-.cardActions button.primary{color:var(--cyan);border-color:#24515a}
-.cardActions button.unset{opacity:.55}
-.linkSetup{all:unset;color:var(--cyan);cursor:pointer;font-size:11px}
-.modalBackdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:flex-end;z-index:50}
-.modalBackdrop.open{display:flex}
-.modal{width:100%;max-width:760px;margin:0 auto;background:#0b151a;border:1px solid var(--line);border-radius:22px 22px 0 0;padding:18px 16px calc(20px + env(safe-area-inset-bottom));max-height:82vh;overflow:auto}
-.modal h3{margin:0 0 6px;font-size:18px}.modal p{margin:0 0 16px;color:var(--muted);font-size:12px;line-height:1.45}
-.field{margin:12px 0}.field label{display:block;font-size:11px;color:#c8e7ec;letter-spacing:.08em;margin-bottom:6px}
-.field input{width:100%;background:#071014;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px;font-size:14px}
-.modalBtns{display:flex;gap:10px;margin-top:16px}.modalBtns button{flex:1;border:1px solid var(--line);border-radius:12px;padding:12px;background:#10242a;color:var(--text);font-weight:700}
-.modalBtns .save{color:var(--cyan);border-color:#24515a}
-.privacyNote{margin-top:12px;color:#5e7780;font-size:11px;line-height:1.45}
+:root{
+  --bg:#061014;--panel:#0c181e;--panel2:#0a1419;--line:#18333d;--line2:#224853;
+  --cyan:#50f3ff;--mag:#ff5bd6;--text:#ecfbff;--muted:#78939d;
+  --good:#83e8ad;--warn:#ffd067;--bad:#ff7f8d;--dim:#56717a
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:18px 16px 124px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;margin:8px 0 18px}
+.brand{font-weight:850;letter-spacing:.08em;font-size:20px}.brand span{color:var(--cyan)}
+.meta{font-size:12px;color:var(--muted);text-align:right;line-height:1.55}
+.hero,.card,.system,.captureBox,.quickPanel{background:linear-gradient(180deg,#0d1a20,#0a151a);border:1px solid var(--line);border-radius:20px}
+.hero{padding:18px}.eyebrow{font-size:11px;letter-spacing:.15em;color:var(--cyan);font-weight:800}
+.hero h1{font-size:25px;line-height:1.1;margin:8px 0 4px}.hero p{margin:0;color:var(--muted);font-size:14px}
+.healthLine{display:flex;align-items:center;gap:8px;margin-top:14px;color:var(--muted);font-size:12px}.dot{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 10px rgba(131,232,173,.35)}
+.nowGrid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px}
+.nowItem{display:flex;gap:10px;padding:12px;border-radius:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.045)}
+.n{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:#0d2931;color:var(--cyan);font-weight:850;font-size:12px;flex:none}
+.nowItem b{display:block;font-size:14px}.nowItem small{color:var(--muted);font-size:12px}
+.sectionTitle{display:flex;justify-content:space-between;align-items:center;margin:22px 4px 10px}
+.sectionTitle h2{font-size:13px;letter-spacing:.13em;margin:0}.sectionTitle span{font-size:11px;color:var(--muted)}
+.sectionActions{display:flex;gap:12px;align-items:center}.textBtn{all:unset;color:var(--cyan);font-size:11px;cursor:pointer}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{padding:15px;min-height:188px;display:flex;flex-direction:column}
+.cardHead{display:flex;justify-content:space-between;gap:8px;align-items:center}.card h3{margin:0;font-size:15px;letter-spacing:.03em}
+.badge{font-size:9px;padding:4px 7px;border-radius:999px;border:1px solid var(--line2);color:var(--muted);max-width:118px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.badge.good{color:var(--good)}.badge.warn{color:var(--warn)}.badge.bad{color:var(--bad)}
+.headline{margin:17px 0 8px;font-size:17px;font-weight:780;line-height:1.18}
+.sub{font-size:12px;color:var(--muted);line-height:1.45;min-height:52px}
+.cardActions{display:flex;gap:7px;margin-top:auto;padding-top:12px}
+.action{flex:1;border:1px solid var(--line2);background:#09151a;color:var(--muted);border-radius:11px;padding:9px 7px;font-size:10px;text-align:center;text-decoration:none}
+.action.primary{color:var(--cyan)}.action.warn{color:var(--warn)}.action:active{transform:scale(.98)}
+.marketWindows{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:11px}
+.mw{background:#081319;border:1px solid var(--line);border-radius:11px;padding:8px 4px;text-align:center}.mw b{display:block;font-size:11px}.mw small{font-size:9px;color:var(--muted)}
+.system{padding:14px}.systemRow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.045);font-size:13px}.systemRow:last-child{border-bottom:0}.systemRow span:last-child{color:var(--muted);text-align:right;max-width:64%}
+.captureBox,.quickPanel{padding:15px}.captureBox textarea{width:100%;min-height:92px;resize:vertical;background:#071014;color:var(--text);border:1px solid var(--line);border-radius:13px;padding:12px;outline:none}
+.captureRow{display:flex;gap:8px;margin-top:9px}.captureRow select,.captureRow button{background:#09151a;color:var(--text);border:1px solid var(--line2);border-radius:11px;padding:10px}
+.captureRow select{flex:1}.captureRow button{color:var(--cyan)}
+.inbox{display:grid;gap:8px;margin-top:12px}.note{border:1px solid var(--line);border-radius:12px;padding:10px;background:#081319}.noteTop{display:flex;justify-content:space-between;gap:8px;font-size:10px;color:var(--muted)}.noteText{font-size:13px;line-height:1.35;margin-top:5px}.noteBtns{display:flex;gap:7px;margin-top:8px}.noteBtns button{border:1px solid var(--line);background:#09151a;color:var(--muted);padding:7px 9px;border-radius:9px;font-size:10px}
+.quickPanel{display:grid;grid-template-columns:1fr 1fr;gap:9px}.quick{border:1px solid var(--line);background:#081319;color:var(--text);border-radius:13px;padding:12px;text-decoration:none;font-size:12px}.quick b{display:block}.quick small{display:block;color:var(--muted);margin-top:3px}
+.bottom{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(6,16,20,0),rgba(6,16,20,.96) 30%,rgba(6,16,20,.995));z-index:30}
+.nav{max-width:760px;margin:auto;background:#09141a;border:1px solid var(--line);border-radius:18px;padding:8px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.nav button{border:0;background:transparent;color:var(--muted);font-size:11px;padding:10px 4px;border-radius:12px}.nav button.active{background:#0d2931;color:var(--cyan)}
+.view{display:none}.view.active{display:block}
+.modalBackdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:flex-end;z-index:60}.modalBackdrop.open{display:flex}
+.modal{width:100%;max-width:760px;margin:0 auto;background:#0a151a;border:1px solid var(--line);border-radius:22px 22px 0 0;padding:18px 16px calc(20px + env(safe-area-inset-bottom));max-height:88vh;overflow:auto}
+.modal h3{margin:0 0 6px;font-size:18px}.modal p{margin:0 0 14px;color:var(--muted);font-size:12px;line-height:1.45}
+.groupTitle{margin:18px 0 8px;color:var(--cyan);font-size:11px;letter-spacing:.12em;font-weight:800}
+.field{margin:11px 0}.field label{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:#c8e7ec;letter-spacing:.05em;margin-bottom:6px}.field input,.field textarea{width:100%;background:#061014;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px;outline:none}.field textarea{min-height:120px}
+.fieldStatus{font-size:9px;color:var(--muted)}.fieldStatus.ok{color:var(--good)}.fieldStatus.bad{color:var(--bad)}
+.inlineBtns{display:flex;gap:7px;margin-top:7px}.inlineBtns button{flex:1;border:1px solid var(--line);background:#081319;color:var(--muted);padding:8px;border-radius:9px;font-size:10px}
+.modalBtns{display:flex;gap:9px;margin-top:15px}.modalBtns button{flex:1;border:1px solid var(--line2);border-radius:12px;padding:12px;background:#0d2931;color:var(--text);font-weight:750}.modalBtns .save{color:var(--cyan)}
+.toast{position:fixed;left:50%;bottom:108px;transform:translateX(-50%) translateY(20px);background:#10242a;border:1px solid var(--line2);color:var(--text);padding:11px 14px;border-radius:12px;font-size:12px;opacity:0;pointer-events:none;transition:.18s;z-index:80;max-width:86%;text-align:center}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.updateBar{display:none;margin:0 0 12px;padding:11px 12px;border:1px solid #5a4d1d;background:#171509;border-radius:12px;color:var(--warn);font-size:12px}.updateBar.show{display:flex;justify-content:space-between;gap:10px;align-items:center}.updateBar button{border:1px solid #5a4d1d;background:#201c09;color:var(--warn);border-radius:9px;padding:7px 9px}
+.diag{display:grid;grid-template-columns:1fr 1fr;gap:8px}.diagItem{border:1px solid var(--line);border-radius:12px;padding:10px;background:#081319}.diagItem b{display:block;font-size:11px}.diagItem small{display:block;color:var(--muted);margin-top:3px}
+.footerNote{margin-top:14px;color:#5e7780;font-size:11px;line-height:1.45}
+@media(max-width:420px){.card{min-height:180px;padding:13px}.headline{font-size:16px}.grid{gap:10px}.action{font-size:9px;padding:9px 5px}}
 </style>
 </head>
 <body>
-<main class="wrap">
-<div class="top"><div class="brand">NEON <span>// MOBILE</span></div><div class="meta"><span id="clock">--:--</span><br><span id="date">--</span></div></div>
+<div class="wrap">
+  <div class="top">
+    <div class="brand">NEON <span>// MOBILE</span></div>
+    <div class="meta"><span id="clock">--:--</span><br><span id="date">--</span></div>
+  </div>
 
-<section class="hero">
-<div class="eyebrow">NOW // v0.3 LINKS</div>
-<h1>System + bezpośrednie wejścia do czatów.</h1>
-<p id="snapshotLine">Ładowanie statusów…</p>
-<div class="top3">
-<div class="priority"><div class="n">1</div><div><b id="top1">OPS</b><small id="top1s">—</small></div></div>
-<div class="priority"><div class="n">2</div><div><b id="top2">MARKET</b><small id="top2s">—</small></div></div>
-<div class="priority"><div class="n">3</div><div><b id="top3">RADAR</b><small id="top3s">—</small></div></div>
-</div>
-</section>
+  <div id="updateBar" class="updateBar"><span>Nowa wersja NEON jest dostępna.</span><button id="applyUpdate">AKTUALIZUJ</button></div>
 
-<div class="sectionTitle" id="modules"><h2>MODULES</h2><span><button class="linkSetup" id="chatSetupBtn">⚙ CZATY</button> · <button id="refreshBtn" style="all:unset;color:var(--cyan);cursor:pointer">↻ ODŚWIEŻ</button></span></div>
-<section class="grid" id="moduleGrid"></section>
+  <section id="view-home" class="view active">
+    <section class="hero">
+      <div class="eyebrow">NEON // v1.0 STABLE</div>
+      <h1>Jedno wejście do całego systemu.</h1>
+      <p id="snapshotLine">Ładowanie statusu…</p>
+      <div class="healthLine"><span class="dot" id="healthDot"></span><span id="healthText">Sprawdzam system…</span></div>
+      <div class="nowGrid">
+        <div class="nowItem"><div class="n">1</div><div><b id="top1">OPS</b><small id="top1s">—</small></div></div>
+        <div class="nowItem"><div class="n">2</div><div><b id="top2">MARKET</b><small id="top2s">—</small></div></div>
+        <div class="nowItem"><div class="n">3</div><div><b id="top3">RADAR</b><small id="top3s">—</small></div></div>
+      </div>
+    </section>
 
-<div class="sectionTitle" id="system"><h2>SYSTEM</h2><span id="systemStamp">health snapshot</span></div>
-<section class="system">
-<div class="systemRow"><span>Mode</span><span>LOW-COST / READ ONLY</span></div>
-<div class="systemRow"><span>Automations</span><span id="sysAuto">—</span></div>
-<div class="systemRow"><span>Experiments</span><span id="sysExp">—</span></div>
-<div class="systemRow"><span>Delivery</span><span id="sysDelivery">—</span></div>
-<div class="systemRow"><span>Writeback</span><span id="sysWrite">—</span></div>
-<div class="systemRow"><span>Data sync</span><span id="sysSync">—</span></div>
-</section>
-<div class="footerNote">NEON Mobile v0.3 — freshness liczone lokalnie z ostatniego snapshotu. Prywatne arkusze nie są publikowane. Automatyczny sync źródeł będzie osobną warstwą.</div>
-</main>
+    <div class="sectionTitle"><h2>QUICK</h2><span>1 tap</span></div>
+    <section class="quickPanel">
+      <button class="quick" data-open-slot="LOUNGE"><b>LOUNGE</b><small>low-cost chat</small></button>
+      <button class="quick" data-open-slot="PRAWO_MAIN"><b>PRAWO</b><small>główny hub</small></button>
+      <button class="quick" data-open-slot="MARKET_MAIN"><b>MARKET</b><small>główny hub</small></button>
+      <button class="quick" data-open-slot="PANEL"><b>PANEL</b><small>główny cockpit</small></button>
+    </section>
 
+    <div class="sectionTitle"><h2>MODULES</h2><div class="sectionActions"><button class="textBtn" id="openLinksBtn">⚙ LINKI</button><button class="textBtn" id="refreshBtn">↻ STATUS</button></div></div>
+    <section class="grid" id="moduleGrid"></section>
 
-<div class="modalBackdrop" id="chatModal">
-  <div class="modal">
-    <h3>NEON // DIRECT CHAT LINKS</h3>
-    <p>Wklej adresy swoich rozmów ChatGPT. Zapisują się tylko lokalnie na tym iPhonie w localStorage — nie trafiają do publicznego repozytorium.</p>
-    <div id="chatFields"></div>
-    <div class="modalBtns">
-      <button id="cancelChatLinks">ANULUJ</button>
-      <button class="save" id="saveChatLinks">ZAPISZ LOKALNIE</button>
+    <div class="sectionTitle"><h2>MARKET WINDOWS</h2><span>10 / 14 / 17:30 / 20</span></div>
+    <div class="marketWindows" id="marketWindows"></div>
+
+    <div class="sectionTitle"><h2>SYSTEM</h2><span id="systemStamp">—</span></div>
+    <section class="system">
+      <div class="systemRow"><span>Mode</span><span>LOW-COST / SAFE</span></div>
+      <div class="systemRow"><span>Automations</span><span id="sysAuto">—</span></div>
+      <div class="systemRow"><span>Experiments</span><span id="sysExp">—</span></div>
+      <div class="systemRow"><span>Delivery</span><span id="sysDelivery">—</span></div>
+      <div class="systemRow"><span>Writeback</span><span id="sysWrite">—</span></div>
+      <div class="systemRow"><span>Sync</span><span id="sysSync">—</span></div>
+    </section>
+  </section>
+
+  <section id="view-modules" class="view">
+    <div class="sectionTitle"><h2>ALL MODULES</h2><button class="textBtn" id="modulesSetupBtn">⚙ LINKI</button></div>
+    <section class="grid" id="moduleGrid2"></section>
+    <div class="footerNote">Każdy moduł ma prywatne linki przechowywane lokalnie na tym urządzeniu oraz publiczny/bezpieczny link do źródła.</div>
+  </section>
+
+  <section id="view-capture" class="view">
+    <div class="sectionTitle"><h2>CAPTURE</h2><span>lokalny inbox</span></div>
+    <section class="captureBox">
+      <textarea id="captureText" placeholder="Pomysł, termin, link, rzecz do sprawdzenia…"></textarea>
+      <div class="captureRow">
+        <select id="captureCategory">
+          <option>OPS</option><option>PRAWO</option><option>MARKET</option><option>RADAR</option><option>NAUKA</option><option>LAB</option><option>PERSONAL</option>
+        </select>
+        <button id="saveCapture">ZAPISZ</button>
+      </div>
+      <div class="inbox" id="captureInbox"></div>
+    </section>
+  </section>
+
+  <section id="view-system" class="view">
+    <div class="sectionTitle"><h2>SYSTEM CONTROL</h2><span>v1.0</span></div>
+    <section class="system">
+      <div class="systemRow"><span>Status snapshot</span><span id="diagSnapshot">—</span></div>
+      <div class="systemRow"><span>Private config</span><span id="diagLinks">—</span></div>
+      <div class="systemRow"><span>Local capture</span><span id="diagNotes">—</span></div>
+      <div class="systemRow"><span>Service worker</span><span id="diagSW">—</span></div>
+      <div class="systemRow"><span>Connection</span><span id="diagOnline">—</span></div>
+    </section>
+    <div class="sectionTitle"><h2>DIAGNOSTICS</h2><span>safe checks</span></div>
+    <div class="diag">
+      <div class="diagItem"><b>Install mode</b><small id="diagStandalone">—</small></div>
+      <div class="diagItem"><b>Storage</b><small id="diagStorage">—</small></div>
+      <div class="diagItem"><b>App version</b><small id="diagVersion">1.0.0</small></div>
+      <div class="diagItem"><b>Remote version</b><small id="diagRemoteVersion">—</small></div>
     </div>
-    <div class="privacyNote">Używaj bezpośredniego adresu rozmowy z chatgpt.com. Nie używaj publicznego „Share link”, jeśli nie chcesz udostępniać rozmowy.</div>
+    <div class="sectionTitle"><h2>TOOLS</h2><span>local only</span></div>
+    <section class="quickPanel">
+      <button class="quick" id="systemLinksBtn"><b>CHAT LINKS</b><small>configure / test</small></button>
+      <button class="quick" id="backupBtn"><b>BACKUP</b><small>export config</small></button>
+      <button class="quick" id="restoreBtn"><b>RESTORE</b><small>import config</small></button>
+      <button class="quick" id="checkUpdateBtn"><b>UPDATE</b><small>check version</small></button>
+    </section>
+    <div class="footerNote">Prywatne linki i notatki pozostają w localStorage tego iPhone’a. Repo GitHub nie zawiera prywatnych identyfikatorów rozmów ani tokenów.</div>
+  </section>
+</div>
+
+<div class="bottom">
+  <nav class="nav">
+    <button data-view="home" class="active">HOME</button>
+    <button data-view="capture">CAPTURE</button>
+    <button data-view="modules">MODULES</button>
+    <button data-view="system">SYSTEM</button>
+  </nav>
+</div>
+
+<div class="modalBackdrop" id="linksModal">
+  <div class="modal">
+    <h3>NEON // PRIVATE LINKS</h3>
+    <p>Wklej bezpośrednie adresy rozmów z ChatGPT. Po zapisaniu NEON robi odczyt kontrolny z localStorage. Linki nigdy nie trafiają do publicznego repo.</p>
+    <div id="linkFields"></div>
+    <div class="modalBtns"><button id="cancelLinks">ANULUJ</button><button class="save" id="saveLinks">ZAPISZ + SPRAWDŹ</button></div>
   </div>
 </div>
 
-<div class="bottom"><nav class="nav"><a class="active" href="#">HOME</a><button disabled>CAPTURE</button><a href="#modules">MODULES</a><a href="#system">SYSTEM</a></nav></div>
+<div class="modalBackdrop" id="backupModal">
+  <div class="modal">
+    <h3 id="backupTitle">NEON // BACKUP</h3>
+    <p id="backupHint">Eksport lub import prywatnej konfiguracji urządzenia.</p>
+    <div class="field"><textarea id="backupText"></textarea></div>
+    <div class="modalBtns"><button id="backupCancel">ZAMKNIJ</button><button class="save" id="backupAction">KOPIUJ</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
 
 <script>
-const ORDER=['OPS','PRAWO','MARKET','RADAR','NAUKA','LAB'];
+const APP_VERSION='1.0.0';
+const STORAGE_KEY='neon_config_v1';
+const NOTES_KEY='neon_capture_v1';
 
+const MODULES=['OPS','PRAWO','MARKET','RADAR','NAUKA','LAB'];
+const LINK_SLOTS=[
+  ['PANEL','Panel główny'],
+  ['LOUNGE','NEON Lounge'],
+  ['OPS_MAIN','Ops + Nauka'],
+  ['PRAWO_MAIN','Prawo — główny'],
+  ['PRAWO_PRACA','Porady prawa pracy'],
+  ['PRAWO_ADMIN','Zajęcia administracyjne'],
+  ['MARKET_MAIN','Market — główny'],
+  ['MARKET_1730','US Desk 17:30'],
+  ['PORTFEL','Portfel inwestycyjny'],
+  ['RADAR_MAIN','Mega Deal Radar'],
+  ['NAUKA_MAIN','Nauka / Ops'],
+  ['LAB_MAIN','NEON Lab']
+];
+
+let STATUS=null;
+let swReg=null;
+
+function $(id){return document.getElementById(id)}
+function toast(msg){
+  const t=$('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove('show'),2400);
+}
 function tick(){
   const n=new Date();
-  document.getElementById('clock').textContent=n.toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});
-  document.getElementById('date').textContent=n.toLocaleDateString('pl-PL',{weekday:'short',day:'2-digit',month:'2-digit'});
+  $('clock').textContent=n.toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});
+  $('date').textContent=n.toLocaleDateString('pl-PL',{weekday:'short',day:'2-digit',month:'2-digit'});
 }
-function ageText(iso){
-  if(!iso) return 'MANUAL';
-  const ms=Date.now()-new Date(iso).getTime();
-  const min=Math.max(0,Math.floor(ms/60000));
-  if(min<2) return 'NOW';
-  if(min<60) return `${min}m`;
-  const h=Math.floor(min/60);
-  if(h<24) return `${h}h`;
-  return `${Math.floor(h/24)}d`;
-}
-function freshness(m){
-  if(m.state==='MANUAL') return {txt:'MANUAL', cls:''};
-  if(m.state==='READY') return {txt:m.label||'READY', cls:'good'};
-  if(m.label==='WEEKEND') return {txt:'WEEKEND', cls:'warn'};
-  const a=m.last_run ? (Date.now()-new Date(m.last_run).getTime())/3600000 : 999;
-  if(m.state==='PARTIAL') return {txt:`PARTIAL · ${ageText(m.last_run)}`, cls:'warn'};
-  if(m.state==='WARN') return {txt:`WARN · ${ageText(m.last_run)}`, cls:'warn'};
-  if(a<=3) return {txt:`FRESH · ${ageText(m.last_run)}`, cls:'good'};
-  if(a<=12) return {txt:`AGED · ${ageText(m.last_run)}`, cls:'warn'};
-  return {txt:`STALE · ${ageText(m.last_run)}`, cls:'warn'};
-}
-function fmtNext(iso){
-  if(!iso) return '';
-  const d=new Date(iso);
-  return d.toLocaleString('pl-PL',{weekday:'short',hour:'2-digit',minute:'2-digit'});
-}
-function getChatLinks(){
-  try{return JSON.parse(localStorage.getItem('neon_chat_links')||'{}')}catch(e){return {}}
-}
-function safeUrl(u){
-  if(!u) return '';
+function normalizeUrl(raw){
+  let s=(raw||'').trim();
+  if(!s) return '';
+  if(!/^https?:\/\//i.test(s)) s='https://'+s;
   try{
-    const x=new URL(u);
-    if(x.protocol!=='https:') return '';
-    return x.href;
+    const u=new URL(s);
+    if(u.protocol!=='https:') return '';
+    const h=u.hostname.toLowerCase();
+    if(!(h==='chatgpt.com'||h==='www.chatgpt.com'||h==='chat.openai.com')) return '';
+    return u.href;
   }catch(e){return ''}
 }
-function openChat(name){
-  const links=getChatLinks();
-  const u=safeUrl(links[name]);
-  if(u){ window.location.href=u; }
-  else { openChatSetup(name); }
+function getConfig(){
+  try{
+    const x=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
+    return {schema:1,links:x.links||{},updated_at:x.updated_at||null};
+  }catch(e){return {schema:1,links:{},updated_at:null}}
 }
-function card(name,m){
-  const f=freshness(m);
-  const next=fmtNext(m.next_expected);
-  const links=getChatLinks();
-  const has=!!safeUrl(links[name]);
-  return `<div class="card">
+function setConfig(cfg){
+  const payload={schema:1,links:cfg.links||{},updated_at:new Date().toISOString()};
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(payload));
+  const verify=getConfig();
+  return JSON.stringify(verify.links)===JSON.stringify(payload.links);
+}
+function slotForModule(m){
+  return ({OPS:'OPS_MAIN',PRAWO:'PRAWO_MAIN',MARKET:'MARKET_MAIN',RADAR:'RADAR_MAIN',NAUKA:'NAUKA_MAIN',LAB:'LAB_MAIN'})[m];
+}
+function openSlot(slot){
+  const u=normalizeUrl(getConfig().links[slot]);
+  if(!u){ openLinks(slot); return; }
+  location.href=u;
+}
+function ageText(iso){
+  if(!iso)return 'MANUAL';
+  const ms=Math.max(0,Date.now()-new Date(iso).getTime()),m=Math.floor(ms/60000);
+  if(m<2)return 'NOW'; if(m<60)return `${m}m`; const h=Math.floor(m/60); if(h<24)return `${h}h`; return `${Math.floor(h/24)}d`;
+}
+function freshness(m){
+  if(m.state==='MANUAL')return {txt:'MANUAL',cls:''};
+  if(m.state==='READY')return {txt:'READY',cls:'good'};
+  if(m.state==='WEEKEND')return {txt:'WEEKEND',cls:'warn'};
+  if(m.state==='PARTIAL')return {txt:`PARTIAL · ${ageText(m.last_run)}`,cls:'warn'};
+  const h=m.last_run?(Date.now()-new Date(m.last_run))/3600000:999;
+  if(h<=3)return {txt:`FRESH · ${ageText(m.last_run)}`,cls:'good'};
+  if(h<=12)return {txt:`AGED · ${ageText(m.last_run)}`,cls:'warn'};
+  return {txt:`STALE · ${ageText(m.last_run)}`,cls:'bad'};
+}
+function fmtNext(iso){
+  if(!iso)return '';
+  return new Date(iso).toLocaleString('pl-PL',{weekday:'short',hour:'2-digit',minute:'2-digit'});
+}
+function moduleCard(name,m){
+  const f=freshness(m),slot=slotForModule(name),cfg=getConfig(),has=!!normalizeUrl(cfg.links[slot]),next=fmtNext(m.next_expected);
+  return `<article class="card">
     <div class="cardHead"><h3>${name}</h3><span class="badge ${f.cls}">${f.txt}</span></div>
     <div class="headline">${m.headline||'—'}</div>
     <div class="sub">${m.detail||''}${next?`<br>Następny: ${next}`:''}</div>
     <div class="cardActions">
-      <button class="primary ${has?'':'unset'}" onclick="openChat('${name}')">${has?'OTWÓRZ CZAT':'USTAW CZAT'}</button>
-      <a href="${m.source_url||'#'}" target="_blank" rel="noopener">ŹRÓDŁO</a>
+      <button class="action primary" onclick="openSlot('${slot}')">${has?'OTWÓRZ CZAT':'USTAW CZAT'}</button>
+      <a class="action" href="${m.source_url||'#'}" target="_blank" rel="noopener">ŹRÓDŁO</a>
     </div>
-  </div>`;
+  </article>`;
+}
+function renderStatus(data){
+  STATUS=data;
+  const snap=new Date(data.snapshot_at);
+  $('snapshotLine').textContent=`Snapshot ${snap.toLocaleString('pl-PL',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})} · freshness liczony teraz`;
+  const mods=data.modules;
+  $('moduleGrid').innerHTML=MODULES.map(k=>moduleCard(k,mods[k])).join('');
+  $('moduleGrid2').innerHTML=$('moduleGrid').innerHTML;
+  const ops=freshness(mods.OPS),market=freshness(mods.MARKET),radar=freshness(mods.RADAR);
+  $('top1').textContent=`OPS · ${ops.txt}`;$('top1s').textContent=mods.OPS.headline;
+  $('top2').textContent=`MARKET · ${market.txt}`;$('top2s').textContent=mods.MARKET.headline;
+  $('top3').textContent=`RADAR · ${radar.txt}`;$('top3s').textContent=mods.RADAR.headline;
+  $('systemStamp').textContent='v'+data.version;
+  const s=data.system||{};$('sysAuto').textContent=s.automations||'—';$('sysExp').textContent=s.experiments||'—';$('sysDelivery').textContent=s.delivery||'—';$('sysWrite').textContent=s.writeback||'—';$('sysSync').textContent=s.sync_mode||'—';
+  const problems=MODULES.filter(k=>['bad','warn'].includes(freshness(mods[k]).cls)).length;
+  $('healthText').textContent=problems?`${problems} moduły wymagają uwagi / weryfikacji`:'System bez widocznych problemów';
+  $('healthDot').style.background=problems?'var(--warn)':'var(--good)';
+  const mw=data.market_windows||{};
+  $('marketWindows').innerHTML=['10:00','14:00','17:30','20:00'].map(k=>{const x=mw[k]||{};return `<div class="mw"><b>${k}</b><small>${x.state||'—'}${x.last?` · ${ageText(x.last)}`:''}</small></div>`}).join('');
+  $('diagSnapshot').textContent=snap.toLocaleString('pl-PL');
+  updateDiagnostics();
 }
 async function loadStatus(){
-  const line=document.getElementById('snapshotLine');
   try{
-    const r=await fetch(`status.json?t=${Date.now()}`,{cache:'no-store'});
-    if(!r.ok) throw new Error('HTTP '+r.status);
-    const data=await r.json();
-    const snap=new Date(data.snapshot_at);
-    line.textContent=`Snapshot ${snap.toLocaleString('pl-PL',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})} · freshness liczone teraz`;
-    document.getElementById('systemStamp').textContent=`v${data.version}`;
-    document.getElementById('moduleGrid').innerHTML=ORDER.map(k=>card(k,data.modules[k])).join('');
-    const s=data.system||{};
-    sysAuto.textContent=s.automations||'—'; sysExp.textContent=s.experiments||'—';
-    sysDelivery.textContent=s.delivery||'—'; sysWrite.textContent=s.writeback||'—'; sysSync.textContent=s.sync_mode||'—';
-    const ops=data.modules.OPS, market=data.modules.MARKET, radar=data.modules.RADAR;
-    top1.textContent=`OPS · ${freshness(ops).txt}`; top1s.textContent=ops.headline;
-    top2.textContent=`MARKET · ${freshness(market).txt}`; top2s.textContent=market.headline;
-    top3.textContent=`RADAR · ${freshness(radar).txt}`; top3s.textContent=radar.headline;
+    const r=await fetch(`status.json?t=${Date.now()}`,{cache:'no-store'}); if(!r.ok)throw 0;
+    renderStatus(await r.json());
   }catch(e){
-    line.textContent='STATUS UNAVAILABLE · użyj linków modułów';
-    document.getElementById('moduleGrid').innerHTML='<div class="card"><div class="headline">Brak status.json</div><div class="sub">Frontend działa, ale snapshot statusów nie został pobrany.</div></div>';
+    $('snapshotLine').textContent='STATUS UNAVAILABLE · użyj linków modułów';
+    $('healthText').textContent='Nie udało się pobrać status.json';
+    $('healthDot').style.background='var(--bad)';
   }
 }
-tick(); setInterval(tick,30000);
-loadStatus(); setInterval(loadStatus,60000);
-document.getElementById('refreshBtn').addEventListener('click',loadStatus);
-
-const CHAT_MODULES=['OPS','PRAWO','MARKET','RADAR','NAUKA','LAB','LOUNGE'];
-function renderChatFields(focusName){
-  const links=getChatLinks();
-  chatFields.innerHTML=CHAT_MODULES.map(n=>`
-    <div class="field">
-      <label>${n}</label>
-      <input data-chat="${n}" type="url" placeholder="https://chatgpt.com/c/..." value="${(links[n]||'').replace(/"/g,'&quot;')}">
-    </div>`).join('');
-  if(focusName){
-    const el=chatFields.querySelector(`[data-chat="${focusName}"]`);
-    if(el) setTimeout(()=>el.focus(),120);
-  }
+function renderLinkFields(focus){
+  const cfg=getConfig();
+  $('linkFields').innerHTML=LINK_SLOTS.map(([key,label])=>{
+    const val=cfg.links[key]||'',ok=!!normalizeUrl(val);
+    return `<div class="field">
+      <label><span>${label}</span><span class="fieldStatus ${val?(ok?'ok':'bad'):''}" id="st-${key}">${val?(ok?'✓ zapisany':'BŁĘDNY'):'PUSTY'}</span></label>
+      <input data-link="${key}" value="${val.replace(/"/g,'&quot;')}" placeholder="chatgpt.com/c/...">
+      <div class="inlineBtns"><button type="button" data-test="${key}">TEST</button><button type="button" data-clear="${key}">WYCZYŚĆ</button></div>
+    </div>`;
+  }).join('');
+  $('linkFields').querySelectorAll('input[data-link]').forEach(i=>i.addEventListener('input',()=>{
+    const st=$('st-'+i.dataset.link),u=normalizeUrl(i.value); st.textContent=i.value.trim()?(u?'✓ poprawny':'BŁĘDNY'):'PUSTY';st.className='fieldStatus '+(i.value.trim()?(u?'ok':'bad'):'');
+  }));
+  $('linkFields').querySelectorAll('button[data-test]').forEach(b=>b.addEventListener('click',()=>{
+    const i=$('linkFields').querySelector(`input[data-link="${b.dataset.test}"]`),u=normalizeUrl(i.value); if(!u)return toast('Najpierw wklej poprawny link ChatGPT'); window.open(u,'_blank','noopener');
+  }));
+  $('linkFields').querySelectorAll('button[data-clear]').forEach(b=>b.addEventListener('click',()=>{const i=$('linkFields').querySelector(`input[data-link="${b.dataset.clear}"]`);i.value='';i.dispatchEvent(new Event('input'))}));
+  if(focus){const i=$('linkFields').querySelector(`input[data-link="${focus}"]`);if(i)setTimeout(()=>{i.scrollIntoView({block:'center'});i.focus()},180)}
 }
-function openChatSetup(focusName){
-  renderChatFields(focusName);
-  chatModal.classList.add('open');
-}
-function closeChatSetup(){chatModal.classList.remove('open')}
-function saveChatLinks(){
-  const out={};
-  chatFields.querySelectorAll('input[data-chat]').forEach(i=>{
-    const u=safeUrl(i.value.trim());
-    if(u) out[i.dataset.chat]=u;
+function openLinks(focus){renderLinkFields(focus);$('linksModal').classList.add('open')}
+function closeLinks(){$('linksModal').classList.remove('open')}
+function saveLinks(){
+  const links={};let invalid=[];
+  $('linkFields').querySelectorAll('input[data-link]').forEach(i=>{
+    const raw=i.value.trim(); if(!raw)return;
+    const u=normalizeUrl(raw); if(u)links[i.dataset.link]=u; else invalid.push(i.dataset.link);
   });
-  localStorage.setItem('neon_chat_links',JSON.stringify(out));
-  closeChatSetup();
-  loadStatus();
+  if(invalid.length)return toast('Błędny link: '+invalid.join(', '));
+  const ok=setConfig({links}); if(!ok)return toast('Błąd zapisu localStorage');
+  const verify=getConfig();
+  if(Object.keys(verify.links).length!==Object.keys(links).length)return toast('Weryfikacja zapisu nie powiodła się');
+  closeLinks(); if(STATUS)renderStatus(STATUS); toast(`✓ ZAPISANO ${Object.keys(links).length} LINKÓW`);
 }
-chatSetupBtn.addEventListener('click',()=>openChatSetup());
-cancelChatLinks.addEventListener('click',closeChatSetup);
-saveChatLinks.addEventListener('click',saveChatLinks);
-chatModal.addEventListener('click',e=>{if(e.target===chatModal)closeChatSetup()});
+function getNotes(){try{return JSON.parse(localStorage.getItem(NOTES_KEY)||'[]')}catch(e){return []}}
+function setNotes(n){localStorage.setItem(NOTES_KEY,JSON.stringify(n.slice(0,30)));renderNotes();updateDiagnostics()}
+function renderNotes(){
+  const n=getNotes();$('captureInbox').innerHTML=n.length?n.map(x=>`<div class="note">
+    <div class="noteTop"><span>${x.category}</span><span>${new Date(x.ts).toLocaleString('pl-PL',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</span></div>
+    <div class="noteText">${escapeHtml(x.text)}</div>
+    <div class="noteBtns"><button data-copy="${x.id}">KOPIUJ</button><button data-open="${x.id}">OTWÓRZ CZAT</button><button data-del="${x.id}">USUŃ</button></div>
+  </div>`).join(''):'<div class="footerNote">Inbox pusty.</div>';
+  $('captureInbox').querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{const x=n.find(z=>z.id===b.dataset.copy);navigator.clipboard?.writeText(x.text);toast('Skopiowano')}));
+  $('captureInbox').querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>{const x=n.find(z=>z.id===b.dataset.open);const slot=slotForModule(x.category)||'LOUNGE';navigator.clipboard?.writeText(x.text);toast('Tekst skopiowany · otwieram czat');setTimeout(()=>openSlot(slot),350)}));
+  $('captureInbox').querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',()=>setNotes(n.filter(z=>z.id!==b.dataset.del))));
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function saveCapture(){
+  const t=$('captureText').value.trim();if(!t)return toast('Wpisz treść');
+  const n=getNotes();n.unshift({id:String(Date.now()),ts:new Date().toISOString(),category:$('captureCategory').value,text:t});setNotes(n);$('captureText').value='';toast('✓ ZAPISANO LOKALNIE');
+}
+function showView(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));
+  document.querySelectorAll('.nav button[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===name));
+  scrollTo({top:0,behavior:'smooth'});
+}
+function updateDiagnostics(){
+  const cfg=getConfig(),notes=getNotes();
+  $('diagLinks').textContent=`${Object.keys(cfg.links).length} saved`;
+  $('diagNotes').textContent=`${notes.length} items`;
+  $('diagSW').textContent=navigator.serviceWorker?.controller?'ACTIVE':'PENDING';
+  $('diagOnline').textContent=navigator.onLine?'ONLINE':'OFFLINE';
+  $('diagStandalone').textContent=matchMedia('(display-mode: standalone)').matches?'PWA / standalone':'browser';
+  try{localStorage.setItem('__neon_test','1');localStorage.removeItem('__neon_test');$('diagStorage').textContent='OK'}catch(e){$('diagStorage').textContent='ERROR'}
+}
+async function checkUpdate(manual=false){
+  try{
+    const r=await fetch(`version.json?t=${Date.now()}`,{cache:'no-store'});const v=await r.json();$('diagRemoteVersion').textContent=v.version||'—';
+    if(v.version && v.version!==APP_VERSION){$('updateBar').classList.add('show');if(manual)toast('Nowa wersja dostępna')}
+    else if(manual)toast('Masz najnowszą wersję');
+    swReg?.update();
+  }catch(e){if(manual)toast('Nie udało się sprawdzić aktualizacji')}
+}
+function openBackup(mode){
+  const cfg={config:getConfig(),notes:getNotes(),exported_at:new Date().toISOString(),schema:1};
+  $('backupModal').classList.add('open');
+  if(mode==='export'){
+    $('backupTitle').textContent='NEON // EXPORT';$('backupHint').textContent='Skopiuj backup ustawień prywatnych i Capture.';$('backupText').value=JSON.stringify(cfg,null,2);$('backupAction').textContent='KOPIUJ';
+    $('backupAction').onclick=()=>{navigator.clipboard?.writeText($('backupText').value);toast('Backup skopiowany')};
+  }else{
+    $('backupTitle').textContent='NEON // RESTORE';$('backupHint').textContent='Wklej wcześniej wyeksportowany JSON.';$('backupText').value='';$('backupAction').textContent='IMPORTUJ';
+    $('backupAction').onclick=()=>{try{const x=JSON.parse($('backupText').value);if(!x.config||!Array.isArray(x.notes))throw 0;setConfig(x.config);setNotes(x.notes);$('backupModal').classList.remove('open');if(STATUS)renderStatus(STATUS);toast('✓ PRZYWRÓCONO')}catch(e){toast('Nieprawidłowy backup')}};
+  }
+}
 
-if('serviceWorker'in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js'))}
+tick();setInterval(tick,30000);
+loadStatus();setInterval(loadStatus,60000);
+renderNotes();updateDiagnostics();checkUpdate(false);
+window.addEventListener('online',updateDiagnostics);window.addEventListener('offline',updateDiagnostics);
+
+document.querySelectorAll('.nav button[data-view]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+document.querySelectorAll('[data-open-slot]').forEach(b=>b.addEventListener('click',()=>openSlot(b.dataset.openSlot)));
+$('openLinksBtn').addEventListener('click',()=>openLinks());
+$('modulesSetupBtn').addEventListener('click',()=>openLinks());
+$('systemLinksBtn').addEventListener('click',()=>openLinks());
+$('cancelLinks').addEventListener('click',closeLinks);$('saveLinks').addEventListener('click',saveLinks);$('linksModal').addEventListener('click',e=>{if(e.target===$('linksModal'))closeLinks()});
+$('refreshBtn').addEventListener('click',()=>{loadStatus();toast('Odświeżam status')});
+$('saveCapture').addEventListener('click',saveCapture);
+$('backupBtn').addEventListener('click',()=>openBackup('export'));$('restoreBtn').addEventListener('click',()=>openBackup('import'));$('backupCancel').addEventListener('click',()=>$('backupModal').classList.remove('open'));
+$('checkUpdateBtn').addEventListener('click',()=>checkUpdate(true));$('applyUpdate').addEventListener('click',async()=>{await swReg?.update();location.reload()});
+
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').then(reg=>{
+    swReg=reg;updateDiagnostics();
+    reg.addEventListener('updatefound',()=>{
+      const nw=reg.installing;if(!nw)return;
+      nw.addEventListener('statechange',()=>{if(nw.state==='installed'&&navigator.serviceWorker.controller)$('updateBar').classList.add('show')});
+    });
+  }).catch(()=>updateDiagnostics());
+}
 </script>
 </body>
 </html>

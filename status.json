@@ -1,11 +1,10 @@
 {
-  "version": "0.3",
-  "snapshot_at": "2026-09-27T20:58:00+02:00",
+  "version": "1.0.0",
+  "snapshot_at": "2026-09-27T21:20:00+02:00",
   "modules": {
     "OPS": {
       "state": "OK",
       "last_run": "2026-09-27T19:31:44+02:00",
-      "label": "OPS_PM",
       "headline": "Audyt + nauka gotowe",
       "detail": "Zapis potwierdzony; doręczenie nieznane.",
       "next_expected": "2026-09-28T08:30:00+02:00",
@@ -14,15 +13,13 @@
     "PRAWO": {
       "state": "MANUAL",
       "last_run": null,
-      "label": "MANUAL",
       "headline": "Sprawy / rejestr",
-      "detail": "Moduł ręczny — bez sztucznego freshness.",
+      "detail": "Moduł ręczny. Status pobierasz przez źródło lub właściwy czat.",
       "source_url": "https://docs.google.com/spreadsheets/d/1Ocr8r_GfclJXj4PAKgTthOTKUmNPkQ3fOfqXUGagv7k/edit"
     },
     "MARKET": {
-      "state": "WARN",
+      "state": "WEEKEND",
       "last_run": "2026-09-25T17:39:00+02:00",
-      "label": "WEEKEND",
       "headline": "Weekend / następne 10:00",
       "detail": "Ostatni zapis 17:30 w piątek; 20:00 ma historyczną lukę 24–25.09.",
       "next_expected": "2026-09-28T10:00:00+02:00",
@@ -31,7 +28,6 @@
     "RADAR": {
       "state": "PARTIAL",
       "last_run": "2026-09-27T14:47:13+02:00",
-      "label": "CZĘŚCIOWO",
       "headline": "ChatGPT Go / Metal",
       "detail": "Skan wykonany; część ofert publicznych miała braki źródeł.",
       "next_expected": "2026-09-28T15:00:00+02:00",
@@ -40,7 +36,6 @@
     "NAUKA": {
       "state": "OK",
       "last_run": "2026-09-27T19:31:44+02:00",
-      "label": "FRESH",
       "headline": "Wieczorne ćwiczenie",
       "detail": "Przygotowane w przebiegu OPS_PM.",
       "next_expected": "2026-09-28T08:30:00+02:00",
@@ -49,17 +44,34 @@
     "LAB": {
       "state": "READY",
       "last_run": null,
-      "label": "2 TESTY",
-      "headline": "E-01 + E-02",
-      "detail": "Testy prospektywne startują 28.09.",
+      "headline": "Eksperymenty systemowe",
+      "detail": "Maks. 2 aktywne testy. Zachowuj rollback i miernik.",
       "source_url": "https://docs.google.com/spreadsheets/d/12OEG8JGJZxe3qy4spe_yttGXYbmiprT4x54iYqKALYw/edit#gid=193580333"
+    }
+  },
+  "market_windows": {
+    "10:00": {
+      "last": "2026-09-25T10:00:00+02:00",
+      "state": "OK"
+    },
+    "14:00": {
+      "last": "2026-09-25T15:15:00+02:00",
+      "state": "LATE"
+    },
+    "17:30": {
+      "last": "2026-09-25T17:39:00+02:00",
+      "state": "OK"
+    },
+    "20:00": {
+      "last": "2026-09-23T20:12:00+02:00",
+      "state": "GAP"
     }
   },
   "system": {
     "automations": "4 active / limit 5",
-    "experiments": "2 planned",
+    "experiments": "2 max",
     "writeback": "OFF",
     "delivery": "OPS push ON · MARKET/RADAR push OFF",
-    "sync_mode": "status.json snapshot + local chat links"
+    "sync_mode": "public snapshot + local private config"
   }
 }
