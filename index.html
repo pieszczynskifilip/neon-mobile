@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071014">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="NEON">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>NEON Mobile</title>
+<style>
+:root{--bg:#071014;--panel:#0d171d;--line:#1e3640;--cyan:#4ff6ff;--mag:#ff4fd8;--text:#eafcff;--muted:#7e9aa4;--good:#8ef0b1;--warn:#ffd36a}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif}
+body{min-height:100vh;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.wrap{max-width:760px;margin:auto;padding:18px 16px 110px}.top{display:flex;justify-content:space-between;align-items:flex-start;margin:8px 0 18px}
+.brand{font-weight:800;letter-spacing:.08em}.brand span{color:var(--cyan)}.meta{font-size:12px;color:var(--muted);text-align:right;line-height:1.5}
+.hero,.card,.system{background:var(--panel);border:1px solid var(--line);border-radius:20px}.hero{padding:18px;margin-bottom:16px}
+.eyebrow{font-size:11px;letter-spacing:.14em;color:var(--cyan);font-weight:700}.hero h1{font-size:24px;margin:8px 0 4px}.hero p{margin:0;color:var(--muted);font-size:14px}
+.top3{display:grid;gap:10px;margin-top:14px}.priority{display:flex;gap:10px;padding:12px;border-radius:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.04)}
+.n{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:#10242a;color:var(--cyan);font-weight:800;font-size:12px;flex:none}.priority b{display:block;font-size:14px}.priority small{color:var(--muted);font-size:12px}
+.sectionTitle{display:flex;justify-content:space-between;align-items:center;margin:22px 4px 10px}.sectionTitle h2{font-size:13px;letter-spacing:.12em;margin:0}.sectionTitle span{font-size:11px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{display:block;text-decoration:none;color:inherit;padding:15px;min-height:140px}
+.cardHead{display:flex;justify-content:space-between;gap:8px;align-items:center}.card h3{margin:0;font-size:15px}.badge{font-size:10px;padding:4px 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}.badge.good{color:var(--good)}.badge.warn{color:var(--warn)}
+.headline{margin:18px 0 8px;font-size:17px;font-weight:750;line-height:1.15}.sub{font-size:12px;color:var(--muted);line-height:1.45}
+.system{padding:14px}.systemRow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px}.systemRow:last-child{border-bottom:0}.systemRow span:last-child{color:var(--muted);text-align:right}
+.bottom{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,transparent,#071014 35%)}.nav{max-width:760px;margin:auto;background:#0b151a;border:1px solid var(--line);border-radius:18px;padding:8px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.nav a,.nav button{border:0;background:transparent;color:var(--muted);font:inherit;font-size:11px;padding:10px 4px;border-radius:12px;text-decoration:none;text-align:center}.nav a.active{background:#10252b;color:var(--cyan)}.nav button:disabled{opacity:.45}
+.footerNote{margin-top:14px;color:#5e7780;font-size:11px}
+</style>
+</head>
+<body>
+<main class="wrap">
+<div class="top"><div class="brand">NEON <span>// MOBILE</span></div><div class="meta"><span id="clock">--:--</span><br><span id="date">--</span></div></div>
+<section class="hero">
+<div class="eyebrow">NOW // READ ONLY</div>
+<h1>Twój system w jednym ekranie.</h1>
+<p>Snapshot + szybkie wejścia. Ta wersja niczego nie nadpisuje.</p>
+<div class="top3">
+<div class="priority"><div class="n">1</div><div><b>Morning Ops</b><small>TOP 3 + deadline watch</small></div></div>
+<div class="priority"><div class="n">2</div><div><b>Rynek tylko przy świeżym sygnale</b><small>US Desk / WTI / GOLD</small></div></div>
+<div class="priority"><div class="n">3</div><div><b>Jedna rzecz do zamknięcia</b><small>Bez dokładania backlogu bez potrzeby</small></div></div>
+</div></section>
+
+<div class="sectionTitle"><h2>MODULES</h2><span>tap → source</span></div>
+<section class="grid">
+<a class="card" href="https://docs.google.com/spreadsheets/d/12OEG8JGJZxe3qy4spe_yttGXYbmiprT4x54iYqKALYw/edit#gid=1555375527" target="_blank"><div class="cardHead"><h3>OPS</h3><span class="badge good">LIVE LINK</span></div><div class="headline">TOP 3 / deadlines</div><div class="sub">NEON Pulpit, Morning Ops, system status.</div></a>
+<a class="card" href="https://docs.google.com/spreadsheets/d/1Ocr8r_GfclJXj4PAKgTthOTKUmNPkQ3fOfqXUGagv7k/edit" target="_blank"><div class="cardHead"><h3>PRAWO</h3><span class="badge good">LIVE LINK</span></div><div class="headline">Sprawy / rejestr</div><div class="sub">Aktywne sprawy i statusy.</div></a>
+<a class="card" href="https://docs.google.com/spreadsheets/d/1DV5hGeBgH0OKWPHMVoycCNtXWp8KqmFwAFafNYeHWM8/edit" target="_blank"><div class="cardHead"><h3>MARKET</h3><span class="badge good">LIVE LINK</span></div><div class="headline">US100 / WTI / GOLD</div><div class="sub">Prediction Ledger, raporty i tezy ex ante.</div></a>
+<a class="card" href="https://docs.google.com/spreadsheets/d/12OEG8JGJZxe3qy4spe_yttGXYbmiprT4x54iYqKALYw/edit#gid=2120871162" target="_blank"><div class="cardHead"><h3>RADAR</h3><span class="badge">CHECKPOINT</span></div><div class="headline">Okazje / sygnały</div><div class="sub">Ostatnie przebiegi RADAR_1500.</div></a>
+<a class="card" href="https://docs.google.com/spreadsheets/d/12OEG8JGJZxe3qy4spe_yttGXYbmiprT4x54iYqKALYw/edit#gid=400459011" target="_blank"><div class="cardHead"><h3>NAUKA</h3><span class="badge warn">DAILY</span></div><div class="headline">Prawo + Swedish A1</div><div class="sub">Weekly Review i powtórki z realnej pracy.</div></a>
+<a class="card" href="https://docs.google.com/spreadsheets/d/12OEG8JGJZxe3qy4spe_yttGXYbmiprT4x54iYqKALYw/edit#gid=193580333" target="_blank"><div class="cardHead"><h3>LAB</h3><span class="badge">2 MAX</span></div><div class="headline">Eksperymenty</div><div class="sub">Hipoteza → test → keep / change / kill.</div></a>
+</section>
+
+<div class="sectionTitle"><h2>SYSTEM</h2><span>health snapshot</span></div>
+<section class="system">
+<div class="systemRow"><span>Mode</span><span>LOW-COST / READ ONLY</span></div>
+<div class="systemRow"><span>Automations</span><span>4 active / limit 5</span></div>
+<div class="systemRow"><span>Experiments</span><span>2 active max</span></div>
+<div class="systemRow"><span>Writeback</span><span>OFF in v0.1</span></div>
+<div class="systemRow"><span>Refresh</span><span>manual links</span></div>
+</section>
+<div class="footerNote">NEON Mobile v0.1 — frontend przygotowany pod późniejsze live statusy, capture i writeback.</div>
+</main>
+
+<div class="bottom"><nav class="nav"><a class="active" href="#">HOME</a><button disabled>CAPTURE</button><a href="#modules">MODULES</a><a href="https://docs.google.com/spreadsheets/d/12OEG8JGJZxe3qy4spe_yttGXYbmiprT4x54iYqKALYw/edit#gid=1555375527" target="_blank">SYSTEM</a></nav></div>
+
+<script>
+function tick(){const n=new Date();clock.textContent=n.toLocaleTimeString('pl-PL',{hour:'2-digit',minute:'2-digit'});date.textContent=n.toLocaleDateString('pl-PL',{weekday:'short',day:'2-digit',month:'2-digit'})}
+tick();setInterval(tick,30000);
+if('serviceWorker'in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js'))}
+</script>
+</body>
+</html>
