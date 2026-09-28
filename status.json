@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "snapshot_at": "2026-09-27T21:20:00+02:00",
   "modules": {
     "OPS": {
@@ -72,6 +72,6 @@
     "experiments": "2 max",
     "writeback": "OFF",
     "delivery": "OPS push ON · MARKET/RADAR push OFF",
-    "sync_mode": "public snapshot + local private config"
+    "sync_mode": "status snapshot + private chat links + Market Intelligence bridge"
   }
 }

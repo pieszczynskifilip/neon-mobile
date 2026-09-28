@@ -1,4 +1,4 @@
-const CACHE='neon-mobile-v1.0.0';
+const CACHE='neon-mobile-v2.0.0';
 const STATIC=['./manifest.json','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',e=>{
   self.skipWaiting();
@@ -30,7 +30,7 @@ self.addEventListener('fetch',e=>{
   if(e.request.method!=='GET') return;
   const u=new URL(e.request.url);
   if(u.origin!==location.origin) return;
-  if(u.pathname.endsWith('/index.html') || u.pathname.endsWith('/status.json') || u.pathname.endsWith('/version.json') || u.pathname.endsWith('/manifest.json') || u.pathname.endsWith('/neon-mobile/')){
+  if(u.pathname.endsWith('/index.html') || u.pathname.endsWith('/status.json') || u.pathname.endsWith('/version.json') || u.pathname.endsWith('/market-intel.json') || u.pathname.endsWith('/manifest.json') || u.pathname.endsWith('/neon-mobile/')){
     e.respondWith(networkFirst(e.request));
   } else {
     e.respondWith(cacheFirst(e.request));

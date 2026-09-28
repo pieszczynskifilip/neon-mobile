@@ -1,0 +1,108 @@
+{
+  "version": "2.0.0",
+  "generated_at": "2026-09-27T21:44:00+02:00",
+  "mode": "snapshot",
+  "latest_report": {
+    "id": "20260925-1730-US-DESK",
+    "executed_at": "2026-09-25T17:39:00+02:00",
+    "window": "17:30 Europe/Warsaw",
+    "source": "Prediction Ledger / Raporty"
+  },
+  "regime": {
+    "label": "MIXED / BOND-STRESS vs OIL-RELIEF",
+    "note": "Weekend snapshot. Ostatni pełny Desk: 25.09 17:39. QQQ utrzymywało dodatni ton mimo US10Y ~5,22%, ale bez czystego broadeningu; WTI wyceniało dyplomację, gold oddał breakout."
+  },
+  "assets": {
+    "US100": {
+      "bias": "NEUTRAL / LONG warunkowo",
+      "confidence": "64%",
+      "trigger": "Dwa M15 >743,22, następnie obrona 743,22 przy poprawie IWM/RSP; mocniejsze potwierdzenie >747,04.",
+      "invalidation": "Utrata 739,25, następnie 737,65 i dwa failed reclaimy M15 wraz z pogorszeniem uczestnictwa.",
+      "stale": true,
+      "prediction": {
+        "active": false,
+        "latest_id": "20260921-2215-US100-FACTOR",
+        "latest_thesis": "QQQ close >743,22 przed close <727,84 do 24.09; teza rozliczona jako trafiona.",
+        "status": "CLOSED",
+        "horizon": "expired"
+      }
+    },
+    "DXY": {
+      "bias": "CONTEXT / DRIVER",
+      "confidence": "—",
+      "trigger": "DXY słabszy wspiera duration/gold; wzrost DXY razem z US10Y wzmacnia pressure na US100 i gold.",
+      "invalidation": "Nie jest samodzielnym setupem — używać jako cross-asset confirmation.",
+      "stale": true,
+      "prediction": {
+        "active": false
+      }
+    },
+    "WTI": {
+      "bias": "NEUTRAL / SHORT taktycznie",
+      "confidence": "65%",
+      "trigger": "Failed rebound 94,53–94,73 albo akceptacja <93,07.",
+      "invalidation": "Utrzymanie >94,73; mocniej >96,78 z nowym potwierdzonym physical disruption.",
+      "stale": true,
+      "prediction": {
+        "active": false,
+        "latest_id": "20260916-1356-WTI",
+        "latest_thesis": "Physical tightness persists, ale rerouting/inventory zmniejszały squeeze; stary wpis bez aktualnego horyzontu.",
+        "status": "historical",
+        "horizon": "expired/unclear"
+      }
+    },
+    "GOLD": {
+      "bias": "NEUTRAL",
+      "confidence": "62%",
+      "trigger": "LONG: GLD >395,55 / GC >4351,5 przy zatrzymaniu wzrostu yields. SHORT: GLD <390,13 / GC <4289,55 przy dalszym wzroście yields.",
+      "invalidation": "Dla shorta odzyskanie 395,55; dla longa powrót pod strefę wybicia wraz z ponownym wzrostem rentowności.",
+      "stale": true,
+      "prediction": {
+        "active": false,
+        "latest_id": "20260921-1730-GOLD-GLD",
+        "latest_thesis": "GLD >=400,10 do 20:00 — rozliczone jako fałszywy alarm; setup nieaktywowany.",
+        "status": "CLOSED",
+        "horizon": "expired"
+      }
+    }
+  },
+  "desk_windows": {
+    "10:00": {
+      "last": "2026-09-25T10:00:00+02:00",
+      "state": "OK"
+    },
+    "14:00": {
+      "last": "2026-09-25T15:15:00+02:00",
+      "state": "LATE / SUBSTITUTE"
+    },
+    "17:30": {
+      "last": "2026-09-25T17:39:00+02:00",
+      "state": "OK"
+    },
+    "20:00": {
+      "last": "2026-09-23T20:12:00+02:00",
+      "state": "GAP 24–25.09"
+    }
+  },
+  "track_record": [
+    {
+      "asset": "US100",
+      "result": "TRAFIENIE",
+      "observation": "20260921-2215-US100-FACTOR: setup aktywowany; wykonanie transakcji nieoceniane."
+    },
+    {
+      "asset": "US100",
+      "result": "TRAFIENIE",
+      "observation": "20260921-1730-US100-QQQ: event spełniony; trigger trafiony, invalidation nie."
+    },
+    {
+      "asset": "GOLD",
+      "result": "FAŁSZYWY ALARM",
+      "observation": "20260921-1730-GOLD-GLD: zdarzenie nie wystąpiło; setup nieaktywowany, bez dowodu transakcji."
+    }
+  ],
+  "sources": {
+    "prediction_ledger": "https://docs.google.com/spreadsheets/d/1DV5hGeBgH0OKWPHMVoycCNtXWp8KqmFwAFafNYeHWM8/edit",
+    "system_ledger": "https://docs.google.com/spreadsheets/d/12OEG8JGJZxe3qy4spe_yttGXYbmiprT4x54iYqKALYw/edit"
+  }
+}

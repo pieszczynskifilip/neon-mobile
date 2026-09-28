@@ -6,7 +6,7 @@
   "display": "standalone",
   "background_color": "#071014",
   "theme_color": "#071014",
-  "description": "Personal cockpit for NEON OS.",
+  "description": "NEON OS cockpit with Market Core, live TradingView layer and AI Prediction Ledger intelligence.",
   "icons": [
     {
       "src": "icon-192.png",

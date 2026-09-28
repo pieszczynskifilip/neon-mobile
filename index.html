@@ -56,7 +56,7 @@ a{color:inherit}
 .inbox{display:grid;gap:8px;margin-top:12px}.note{border:1px solid var(--line);border-radius:12px;padding:10px;background:#081319}.noteTop{display:flex;justify-content:space-between;gap:8px;font-size:10px;color:var(--muted)}.noteText{font-size:13px;line-height:1.35;margin-top:5px}.noteBtns{display:flex;gap:7px;margin-top:8px}.noteBtns button{border:1px solid var(--line);background:#09151a;color:var(--muted);padding:7px 9px;border-radius:9px;font-size:10px}
 .quickPanel{display:grid;grid-template-columns:1fr 1fr;gap:9px}.quick{border:1px solid var(--line);background:#081319;color:var(--text);border-radius:13px;padding:12px;text-decoration:none;font-size:12px}.quick b{display:block}.quick small{display:block;color:var(--muted);margin-top:3px}
 .bottom{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(6,16,20,0),rgba(6,16,20,.96) 30%,rgba(6,16,20,.995));z-index:30}
-.nav{max-width:760px;margin:auto;background:#09141a;border:1px solid var(--line);border-radius:18px;padding:8px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.nav{max-width:760px;margin:auto;background:#09141a;border:1px solid var(--line);border-radius:18px;padding:8px;display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
 .nav button{border:0;background:transparent;color:var(--muted);font-size:11px;padding:10px 4px;border-radius:12px}.nav button.active{background:#0d2931;color:var(--cyan)}
 .view{display:none}.view.active{display:block}
 .modalBackdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:flex-end;z-index:60}.modalBackdrop.open{display:flex}
@@ -72,6 +72,35 @@ a{color:inherit}
 .diag{display:grid;grid-template-columns:1fr 1fr;gap:8px}.diagItem{border:1px solid var(--line);border-radius:12px;padding:10px;background:#081319}.diagItem b{display:block;font-size:11px}.diagItem small{display:block;color:var(--muted);margin-top:3px}
 .footerNote{margin-top:14px;color:#5e7780;font-size:11px;line-height:1.45}
 @media(max-width:420px){.card{min-height:180px;padding:13px}.headline{font-size:16px}.grid{gap:10px}.action{font-size:9px;padding:9px 5px}}
+
+.marketHero{background:linear-gradient(180deg,#0d1b22,#081419);border:1px solid var(--line);border-radius:20px;padding:16px}
+.marketTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.marketTop h2{margin:4px 0 2px;font-size:23px}.marketTop p{margin:0;color:var(--muted);font-size:12px;line-height:1.4}
+.livePill{font-size:9px;border:1px solid var(--line2);border-radius:999px;padding:5px 8px;color:var(--cyan);white-space:nowrap}
+.tvBox{background:#081319;border:1px solid var(--line);border-radius:17px;overflow:hidden;min-height:74px}
+.tvChart{height:500px}.tvCalendar{height:620px}
+.assetSwitch{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:10px 0}
+.assetSwitch button{border:1px solid var(--line);background:#081319;color:var(--muted);border-radius:10px;padding:9px 4px;font-size:10px}
+.assetSwitch button.active{color:var(--cyan);border-color:#2a6570;background:#0b2027}
+.intelHead{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}
+.intelHead b{font-size:14px}.feedBadge{font-size:9px;border:1px solid var(--line);border-radius:999px;padding:4px 7px;color:var(--muted)}
+.feedBadge.live{color:var(--good)}.feedBadge.snap{color:var(--warn)}
+.regimeBox{background:#0a151a;border:1px solid var(--line);border-radius:16px;padding:14px}
+.regimeLabel{font-size:10px;color:var(--cyan);letter-spacing:.12em}.regimeText{font-size:18px;font-weight:800;margin-top:6px}.regimeMeta{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.4}
+.intelGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.intelCard{background:#0a151a;border:1px solid var(--line);border-radius:16px;padding:13px;min-height:210px}
+.intelCard .asset{display:flex;justify-content:space-between;gap:8px;align-items:center}.intelCard .asset b{font-size:14px}
+.bias{font-size:16px;font-weight:800;margin:13px 0 5px}.confidence{font-size:10px;color:var(--muted)}
+.level{margin-top:10px;padding-top:9px;border-top:1px solid rgba(255,255,255,.05)}.level b{display:block;color:#cbe8ed;font-size:10px;margin-bottom:3px}.level span{display:block;color:var(--muted);font-size:11px;line-height:1.35}
+.predBox{margin-top:10px;border:1px solid rgba(255,255,255,.05);border-radius:11px;padding:9px;background:#071216}.predBox .pTitle{font-size:9px;color:var(--cyan);letter-spacing:.08em}.predBox .pText{font-size:11px;line-height:1.35;margin-top:4px}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.timeCell{background:#081319;border:1px solid var(--line);border-radius:12px;padding:9px 6px;text-align:center}.timeCell b{display:block;font-size:11px}.timeCell span{display:block;font-size:9px;color:var(--muted);margin-top:4px;line-height:1.25}
+.resultStrip{display:grid;gap:8px}.resultItem{display:flex;justify-content:space-between;gap:12px;background:#081319;border:1px solid var(--line);border-radius:12px;padding:10px}.resultItem b{font-size:11px}.resultItem span{font-size:10px;color:var(--muted);text-align:right;max-width:68%}
+.marketNote{font-size:10px;color:var(--dim);line-height:1.45;margin:9px 2px 0}
+.feedSetup{background:#081319;border:1px solid var(--line);border-radius:15px;padding:13px}.feedSetup input{width:100%;background:#061014;color:var(--text);border:1px solid var(--line);border-radius:11px;padding:11px;font-size:12px}
+.feedSetup .row{display:flex;gap:8px;margin-top:8px}.feedSetup button{flex:1;border:1px solid var(--line2);background:#0b2027;color:var(--cyan);border-radius:10px;padding:9px;font-size:10px}
+@media(max-width:420px){.intelGrid{grid-template-columns:1fr}.tvChart{height:455px}.tvCalendar{height:560px}.marketTop h2{font-size:21px}}
+
 </style>
 </head>
 <body>
@@ -85,8 +114,8 @@ a{color:inherit}
 
   <section id="view-home" class="view active">
     <section class="hero">
-      <div class="eyebrow">NEON // v1.0 STABLE</div>
-      <h1>Jedno wejście do całego systemu.</h1>
+      <div class="eyebrow">NEON // v2.0 MARKET</div>
+      <h1>System + pełny Market Core.</h1>
       <p id="snapshotLine">Ładowanie statusu…</p>
       <div class="healthLine"><span class="dot" id="healthDot"></span><span id="healthText">Sprawdzam system…</span></div>
       <div class="nowGrid">
@@ -100,7 +129,7 @@ a{color:inherit}
     <section class="quickPanel">
       <button class="quick" data-open-slot="LOUNGE"><b>LOUNGE</b><small>low-cost chat</small></button>
       <button class="quick" data-open-slot="PRAWO_MAIN"><b>PRAWO</b><small>główny hub</small></button>
-      <button class="quick" data-open-slot="MARKET_MAIN"><b>MARKET</b><small>główny hub</small></button>
+      <button class="quick" data-go-view="market"><b>MARKET</b><small>live + AI desk</small></button>
       <button class="quick" data-open-slot="PANEL"><b>PANEL</b><small>główny cockpit</small></button>
     </section>
 
@@ -120,6 +149,53 @@ a{color:inherit}
       <div class="systemRow"><span>Sync</span><span id="sysSync">—</span></div>
     </section>
   </section>
+
+
+  <section id="view-market" class="view">
+    <section class="marketHero">
+      <div class="marketTop">
+        <div>
+          <div class="eyebrow">MARKET CORE // LIVE + AI</div>
+          <h2>US100 · DXY · WTI · GOLD</h2>
+          <p>Live market layer + NEON Desk + Prediction Ledger + macro calendar.</p>
+        </div>
+        <span class="livePill" id="marketFeedState">LOADING</span>
+      </div>
+    </section>
+
+    <div class="sectionTitle"><h2>LIVE TAPE</h2><span>TradingView feed</span></div>
+    <div class="tvBox" id="tvTicker"></div>
+    <div class="marketNote">Notowania pochodzą z TradingView; część instrumentów może być opóźniona zależnie od rynku i uprawnień do danych.</div>
+
+    <div class="sectionTitle"><h2>CHART</h2><span id="chartLabel">US100 / NDX</span></div>
+    <div class="assetSwitch" id="assetSwitch">
+      <button class="active" data-symbol="NASDAQ:NDX" data-label="US100 / NDX">US100</button>
+      <button data-symbol="TVC:DXY" data-label="DXY">DXY</button>
+      <button data-symbol="TVC:USOIL" data-label="WTI / USOIL">WTI</button>
+      <button data-symbol="OANDA:XAUUSD" data-label="GOLD / XAUUSD">GOLD</button>
+    </div>
+    <div class="tvBox tvChart" id="tvChart"></div>
+
+    <div class="sectionTitle"><h2>NEON AI DESK</h2><span id="intelFreshness">—</span></div>
+    <div class="regimeBox">
+      <div class="intelHead"><div><div class="regimeLabel">LAST DESK REGIME</div><div class="regimeText" id="marketRegime">—</div></div><span class="feedBadge snap" id="intelFeedBadge">SNAPSHOT</span></div>
+      <div class="regimeMeta" id="marketRegimeMeta">Ładowanie warstwy intelligence…</div>
+    </div>
+
+    <div class="sectionTitle"><h2>ASSET INTELLIGENCE</h2><span>bias · trigger · invalidation</span></div>
+    <div class="intelGrid" id="intelGrid"></div>
+
+    <div class="sectionTitle"><h2>DESK WINDOWS</h2><span>10 / 14 / 17:30 / 20</span></div>
+    <div class="timeline" id="deskTimeline"></div>
+
+    <div class="sectionTitle"><h2>TRACK RECORD</h2><span>ostatnie rozliczenia</span></div>
+    <div class="resultStrip" id="trackRecord"></div>
+
+    <div class="sectionTitle"><h2>MACRO CALENDAR</h2><span>high-impact first</span></div>
+    <div class="tvBox tvCalendar" id="tvCalendar"></div>
+    <div class="marketNote">Kalendarz jest zewnętrzną warstwą danych. NEON Desk interpretuje publikacje dopiero wraz z reakcją US10Y/DXY/WTI/US100 — sama liczba makro nie jest sygnałem.</div>
+  </section>
+
 
   <section id="view-modules" class="view">
     <div class="sectionTitle"><h2>ALL MODULES</h2><button class="textBtn" id="modulesSetupBtn">⚙ LINKI</button></div>
@@ -142,7 +218,7 @@ a{color:inherit}
   </section>
 
   <section id="view-system" class="view">
-    <div class="sectionTitle"><h2>SYSTEM CONTROL</h2><span>v1.0</span></div>
+    <div class="sectionTitle"><h2>SYSTEM CONTROL</h2><span>v2.0</span></div>
     <section class="system">
       <div class="systemRow"><span>Status snapshot</span><span id="diagSnapshot">—</span></div>
       <div class="systemRow"><span>Private config</span><span id="diagLinks">—</span></div>
@@ -154,9 +230,17 @@ a{color:inherit}
     <div class="diag">
       <div class="diagItem"><b>Install mode</b><small id="diagStandalone">—</small></div>
       <div class="diagItem"><b>Storage</b><small id="diagStorage">—</small></div>
-      <div class="diagItem"><b>App version</b><small id="diagVersion">1.0.0</small></div>
+      <div class="diagItem"><b>App version</b><small id="diagVersion">2.0.0</small></div>
       <div class="diagItem"><b>Remote version</b><small id="diagRemoteVersion">—</small></div>
     </div>
+
+    <div class="sectionTitle"><h2>MARKET INTELLIGENCE FEED</h2><span>read-only bridge</span></div>
+    <section class="feedSetup">
+      <input id="marketFeedUrl" type="url" placeholder="Apps Script Web App URL …/exec">
+      <div class="row"><button id="saveMarketFeed">ZAPISZ FEED</button><button id="testMarketFeed">TEST FEED</button><button id="clearMarketFeed">SNAPSHOT</button></div>
+      <div class="footerNote">URL zapisuje się tylko lokalnie. Jeśli pole jest puste, aplikacja używa repozytoryjnego market-intel.json jako fallbacku.</div>
+    </section>
+
     <div class="sectionTitle"><h2>TOOLS</h2><span>local only</span></div>
     <section class="quickPanel">
       <button class="quick" id="systemLinksBtn"><b>CHAT LINKS</b><small>configure / test</small></button>
@@ -171,6 +255,7 @@ a{color:inherit}
 <div class="bottom">
   <nav class="nav">
     <button data-view="home" class="active">HOME</button>
+    <button data-view="market">MARKET</button>
     <button data-view="capture">CAPTURE</button>
     <button data-view="modules">MODULES</button>
     <button data-view="system">SYSTEM</button>
@@ -198,7 +283,7 @@ a{color:inherit}
 <div class="toast" id="toast"></div>
 
 <script>
-const APP_VERSION='1.0.0';
+const APP_VERSION='2.0.0';
 const STORAGE_KEY='neon_config_v1';
 const NOTES_KEY='neon_capture_v1';
 
@@ -409,6 +494,133 @@ function openBackup(mode){
   }
 }
 
+
+const MARKET_FEED_KEY='neon_market_feed_v2';
+let MARKET_INTEL=null;
+let marketLoadTimer=null;
+
+function marketAgeLabel(iso){
+  if(!iso)return 'BRAK DATY';
+  const ms=Date.now()-new Date(iso).getTime();
+  const h=Math.floor(ms/3600000);
+  if(h<1)return '<1h';
+  if(h<24)return `${h}h`;
+  return `${Math.floor(h/24)}d`;
+}
+function getMarketFeedUrl(){return localStorage.getItem(MARKET_FEED_KEY)||''}
+function setMarketFeedUrl(v){if(v)localStorage.setItem(MARKET_FEED_KEY,v);else localStorage.removeItem(MARKET_FEED_KEY)}
+function isAppsScriptUrl(v){
+  try{const u=new URL(v);return u.protocol==='https:'&&(u.hostname==='script.google.com'||u.hostname.endsWith('.googleusercontent.com'))}catch(e){return false}
+}
+function tvEmbed(containerId,scriptName,config){
+  const el=$(containerId); if(!el)return;
+  el.innerHTML='';
+  const outer=document.createElement('div');outer.className='tradingview-widget-container';outer.style.height='100%';outer.style.width='100%';
+  const widget=document.createElement('div');widget.className='tradingview-widget-container__widget';widget.style.height='calc(100% - 1px)';widget.style.width='100%';
+  const sc=document.createElement('script');sc.type='text/javascript';sc.src=`https://s3.tradingview.com/external-embedding/${scriptName}`;sc.async=true;sc.textContent=JSON.stringify(config);
+  outer.appendChild(widget);outer.appendChild(sc);el.appendChild(outer);
+}
+function initTradingView(){
+  tvEmbed('tvTicker','embed-widget-ticker-tape.js',{
+    symbols:[
+      {proName:'NASDAQ:NDX',title:'US100'},
+      {proName:'TVC:DXY',title:'DXY'},
+      {proName:'TVC:USOIL',title:'WTI'},
+      {proName:'OANDA:XAUUSD',title:'GOLD'},
+      {proName:'TVC:US10Y',title:'US10Y'},
+      {proName:'CBOE:VIX',title:'VIX'}
+    ],
+    showSymbolLogo:true,isTransparent:true,displayMode:'adaptive',colorTheme:'dark',locale:'pl'
+  });
+  renderTvChart('NASDAQ:NDX');
+  tvEmbed('tvCalendar','embed-widget-events.js',{
+    colorTheme:'dark',isTransparent:true,width:'100%',height:'100%',locale:'pl',
+    importanceFilter:'0,1',countryFilter:'us,eu'
+  });
+}
+function renderTvChart(symbol){
+  tvEmbed('tvChart','embed-widget-advanced-chart.js',{
+    autosize:true,symbol:symbol,interval:'15',timezone:'Europe/Warsaw',theme:'dark',style:'1',locale:'pl',
+    withdateranges:true,hide_side_toolbar:false,allow_symbol_change:true,save_image:false,calendar:false,support_host:'https://www.tradingview.com'
+  });
+}
+function safeText(v){return (v===null||v===undefined||v==='')?'—':String(v)}
+function intelCard(asset,x){
+  x=x||{};
+  const pred=x.prediction||{};
+  const predictionLine=pred.active
+    ? `<div class="predBox"><div class="pTitle">ACTIVE QUALIFIED PREDICTION</div><div class="pText">${safeText(pred.thesis)}<br><span style="color:var(--muted)">Horyzont: ${safeText(pred.horizon)} · status: ${safeText(pred.status)}</span></div></div>`
+    : `<div class="predBox"><div class="pTitle">PREDICTION LEDGER</div><div class="pText">${pred.latest_thesis?`Ostatni wpis: ${safeText(pred.latest_thesis)}`:'Brak aktywnej kwalifikującej prognozy.'}</div></div>`;
+  return `<article class="intelCard">
+    <div class="asset"><b>${asset}</b><span class="badge ${x.stale?'warn':'good'}">${x.stale?'STALE/CONTEXT':'CURRENT'}</span></div>
+    <div class="bias">${safeText(x.bias)}</div>
+    <div class="confidence">Confidence analizy: ${safeText(x.confidence)}${x.probability?` · P zdarzenia: ${safeText(x.probability)}`:''}</div>
+    <div class="level"><b>TRIGGER</b><span>${safeText(x.trigger)}</span></div>
+    <div class="level"><b>INVALIDATION / CHANGE MY MIND</b><span>${safeText(x.invalidation||x.change_mind)}</span></div>
+    ${predictionLine}
+  </article>`;
+}
+function renderMarketIntel(d,mode){
+  MARKET_INTEL=d;
+  $('marketFeedState').textContent=mode==='remote'?'LIVE INTEL':'SNAPSHOT';
+  $('intelFeedBadge').textContent=mode==='remote'?'LIVE BRIDGE':'SNAPSHOT';
+  $('intelFeedBadge').className='feedBadge '+(mode==='remote'?'live':'snap');
+  const generated=d.generated_at||d.snapshot_at;
+  $('intelFreshness').textContent=generated?`${marketAgeLabel(generated)} old`:'—';
+  $('marketRegime').textContent=safeText(d.regime?.label||d.regime);
+  $('marketRegimeMeta').textContent=safeText(d.regime?.note||d.latest_report?.summary||`Feed: ${mode}`);
+  const intel=d.assets||{};
+  $('intelGrid').innerHTML=['US100','DXY','WTI','GOLD'].map(a=>intelCard(a,intel[a])).join('');
+  const dw=d.desk_windows||{};
+  $('deskTimeline').innerHTML=['10:00','14:00','17:30','20:00'].map(k=>{
+    const x=dw[k]||{};
+    return `<div class="timeCell"><b>${k}</b><span>${safeText(x.state||x.status)}<br>${x.last?marketAgeLabel(x.last)+' old':'—'}</span></div>`;
+  }).join('');
+  const tr=d.track_record||[];
+  $('trackRecord').innerHTML=tr.length?tr.slice(0,5).map(x=>`<div class="resultItem"><b>${safeText(x.asset)} · ${safeText(x.result)}</b><span>${safeText(x.observation)}</span></div>`).join('')
+    :'<div class="footerNote">Brak świeżych rozliczeń w feedzie.</div>';
+}
+async function loadMarketFallback(){
+  const r=await fetch(`market-intel.json?t=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw 0;return await r.json();
+}
+function loadMarketRemote(url,timeout=7000){
+  return new Promise((resolve,reject)=>{
+    const cb='NEON_MARKET_CB';
+    let done=false;
+    const finish=(fn,val)=>{if(done)return;done=true;clearTimeout(to);script.remove();try{delete window[cb]}catch(e){};fn(val)};
+    window[cb]=(data)=>finish(resolve,data);
+    const script=document.createElement('script');
+    const sep=url.includes('?')?'&':'?';
+    script.src=url+sep+'prefix='+cb+'&t='+Date.now();
+    script.onerror=()=>finish(reject,new Error('feed'));
+    document.body.appendChild(script);
+    const to=setTimeout(()=>finish(reject,new Error('timeout')),timeout);
+  });
+}
+async function loadMarketIntel(showToast=false){
+  const url=getMarketFeedUrl();
+  try{
+    if(url&&isAppsScriptUrl(url)){
+      const d=await loadMarketRemote(url);renderMarketIntel(d,'remote');if(showToast)toast('Market feed: LIVE BRIDGE');return;
+    }
+  }catch(e){ if(showToast)toast('Bridge niedostępny — fallback snapshot'); }
+  try{renderMarketIntel(await loadMarketFallback(),'snapshot')}catch(e){$('marketFeedState').textContent='INTEL ERROR'}
+}
+function initMarketSettings(){
+  $('marketFeedUrl').value=getMarketFeedUrl();
+  $('saveMarketFeed').addEventListener('click',()=>{
+    const v=$('marketFeedUrl').value.trim();
+    if(v&&!isAppsScriptUrl(v))return toast('Wklej URL Google Apps Script /exec');
+    setMarketFeedUrl(v);toast(v?'✓ FEED ZAPISANY':'Ustawiono snapshot');loadMarketIntel(true)
+  });
+  $('testMarketFeed').addEventListener('click',async()=>{
+    const v=$('marketFeedUrl').value.trim();if(!isAppsScriptUrl(v))return toast('Brak poprawnego URL /exec');
+    try{const d=await loadMarketRemote(v);renderMarketIntel(d,'remote');toast('✓ FEED DZIAŁA')}catch(e){toast('Feed nie odpowiada')}
+  });
+  $('clearMarketFeed').addEventListener('click',()=>{$('marketFeedUrl').value='';setMarketFeedUrl('');loadMarketIntel();toast('Fallback: market-intel.json')});
+}
+
+
 tick();setInterval(tick,30000);
 loadStatus();setInterval(loadStatus,60000);
 renderNotes();updateDiagnostics();checkUpdate(false);
@@ -416,6 +628,7 @@ window.addEventListener('online',updateDiagnostics);window.addEventListener('off
 
 document.querySelectorAll('.nav button[data-view]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
 document.querySelectorAll('[data-open-slot]').forEach(b=>b.addEventListener('click',()=>openSlot(b.dataset.openSlot)));
+document.querySelectorAll('[data-go-view]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.goView)));
 $('openLinksBtn').addEventListener('click',()=>openLinks());
 $('modulesSetupBtn').addEventListener('click',()=>openLinks());
 $('systemLinksBtn').addEventListener('click',()=>openLinks());
@@ -423,7 +636,15 @@ $('cancelLinks').addEventListener('click',closeLinks);$('saveLinks').addEventLis
 $('refreshBtn').addEventListener('click',()=>{loadStatus();toast('Odświeżam status')});
 $('saveCapture').addEventListener('click',saveCapture);
 $('backupBtn').addEventListener('click',()=>openBackup('export'));$('restoreBtn').addEventListener('click',()=>openBackup('import'));$('backupCancel').addEventListener('click',()=>$('backupModal').classList.remove('open'));
-$('checkUpdateBtn').addEventListener('click',()=>checkUpdate(true));$('applyUpdate').addEventListener('click',async()=>{await swReg?.update();location.reload()});
+$('checkUpdateBtn').addEventListener('click',()=>checkUpdate(true));
+document.querySelectorAll('#assetSwitch button[data-symbol]').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#assetSwitch button').forEach(x=>x.classList.toggle('active',x===b));
+  $('chartLabel').textContent=b.dataset.label;renderTvChart(b.dataset.symbol);
+}));
+initTradingView();
+initMarketSettings();
+loadMarketIntel();
+marketLoadTimer=setInterval(()=>loadMarketIntel(false),60000);$('applyUpdate').addEventListener('click',async()=>{await swReg?.update();location.reload()});
 
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('sw.js').then(reg=>{
