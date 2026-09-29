@@ -1,6 +1,6 @@
 {
-  "version": "2.0.0",
-  "generated_at": "2026-09-27T21:44:00+02:00",
+  "version": "3.0.0",
+  "generated_at": "2026-09-28T10:50:00+02:00",
   "mode": "snapshot",
   "latest_report": {
     "id": "20260925-1730-US-DESK",
@@ -64,6 +64,26 @@
         "status": "CLOSED",
         "horizon": "expired"
       }
+    },
+    "US10Y": {
+      "bias": "CONTEXT / RATES",
+      "confidence": "—",
+      "trigger": "Rosnący 10Y jest headwindem dla duration/AI; spadek yields wspiera Nasdaq i gold.",
+      "invalidation": "Nie jest samodzielnym setupem; wymaga price confirmation.",
+      "stale": true,
+      "prediction": {
+        "active": false
+      }
+    },
+    "VIX": {
+      "bias": "CONTEXT / VOL",
+      "confidence": "—",
+      "trigger": "Wzrost VIX przy słabnącym breadth wzmacnia risk-off; spadek VIX bez broadeningu nie wystarcza.",
+      "invalidation": "Nie używać jako samodzielnego sygnału kierunkowego.",
+      "stale": true,
+      "prediction": {
+        "active": false
+      }
     }
   },
   "desk_windows": {
@@ -104,5 +124,8 @@
   "sources": {
     "prediction_ledger": "https://docs.google.com/spreadsheets/d/1DV5hGeBgH0OKWPHMVoycCNtXWp8KqmFwAFafNYeHWM8/edit",
     "system_ledger": "https://docs.google.com/spreadsheets/d/12OEG8JGJZxe3qy4spe_yttGXYbmiprT4x54iYqKALYw/edit"
-  }
+  },
+  "quote_source": "Bridge v3 required for raw quotes",
+  "quotes": {},
+  "active_predictions": []
 }

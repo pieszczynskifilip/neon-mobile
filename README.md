@@ -1,36 +1,36 @@
-# NEON Mobile v2.0 — MARKET CORE
+# NEON Mobile v3.0 — MARKET TERMINAL
 
-Duży upgrade architektoniczny, nie mały patch.
+## Co zmieniono po krytycznym przeglądzie v2
+- główny MARKET nie używa już ticker-tape ani osadzonego wykresu TradingView;
+- domyślny ekran to własny WATCH w stylu terminala/obserwowanych;
+- CORE: US100 / DXY / US10Y / WTI / GOLD / VIX;
+- BREADTH: QQQ / SMH / IWM / RSP / QQQE;
+- AI / MEGA CAP: NVDA / MSFT / AVGO / META / AAPL / AMZN / GOOGL / TSLA;
+- po rozwinięciu instrumentu: day range, prev close, sparkline, timestamp, źródło, Desk delta;
+- dla core: NEON bias, trigger, invalidation i PRICE ALIGNMENT;
+- własny wykres SVG z feedu 5d/15m;
+- TradingView otwierany dopiero na żądanie;
+- osobne zakładki WATCH / DESK / MACRO / PRED / CHART;
+- aktywna prognoza jest aktywna tylko z niewygasłym mierzalnym horyzontem;
+- frontend trzyma lokalny cache ostatniego poprawnego payloadu;
+- refresh co 60 s działa tylko, gdy MARKET jest widoczny.
 
-## MARKET
-- LIVE TAPE: US100/NDX, DXY, WTI, GOLD, US10Y, VIX przez TradingView.
-- Advanced Chart z przełączaniem US100 / DXY / WTI / GOLD.
-- TradingView Economic Calendar.
-- NEON AI DESK: regime, bias, trigger, invalidation, confidence.
-- Prediction Ledger: aktywna kwalifikująca prognoza albo uczciwy status „brak aktywnej”.
-- Desk windows 10:00 / 14:00 / 17:30 / 20:00.
-- Track record z Rozliczenia_v2.
-- Remote Market Intelligence Bridge przez Google Apps Script JSONP.
-- Fallback market-intel.json, jeśli bridge jest wyłączony.
+## Krytyczna zasada
+PRICE ALIGNMENT nie jest automatycznym „thesis status”.
+Jeśli bias LONG i cena rośnie od ostatniego Desk, aplikacja mówi tylko PRICE ALIGNED.
+Trigger/invalidation nadal mają pierwszeństwo.
 
-## Prywatność
-- Chat links i URL bridge pozostają w localStorage iPhone'a.
-- Publiczne repo nie zawiera prywatnych linków do rozmów.
-- Frontend nie zawiera kluczy API.
-- Market bridge ma być READ ONLY i zwracać wyłącznie sanitizowane dane rynkowe.
+## Bridge v3
+Plik NEON_Market_Bridge_v3_PRIVATE.gs jest prywatny.
+Nie wrzucaj go do publicznego GitHuba.
 
-## Dlaczego bridge
-TradingView daje live layer i kalendarz, ale prywatny Prediction Ledger/System Ledger nie powinien być publikowany w całości.
-Apps Script czyta prywatne arkusze po stronie Google i zwraca tylko wybrane pola do telefonu.
+Bridge czyta prywatne Ledger-y i pobiera publiczne market quotes best-effort.
+To nie jest feed instytucjonalny. Dane mogą być opóźnione albo chwilowo niedostępne.
 
-## Wdrożenie frontendu
-Podmień cały komplet w root repo:
-index.html, sw.js, status.json, version.json, market-intel.json, manifest.json, README.md/README.txt, ikony.
-
-## Bridge
-Plik NEON_Market_Bridge_PRIVATE.gs jest osobnym plikiem prywatnym. NIE wrzucaj go do publicznego repo.
-Wklej go do Google Apps Script, uruchom setupPrivate(), wdroż jako Web App i wpisz URL /exec w SYSTEM > MARKET INTELLIGENCE FEED.
-
-## Ważne
-TradingView widget może mieć opóźnienia zależne od instrumentu i uprawnień danych.
-Nasze trigger/invalidation są wyświetlane obok wykresu. Standardowy widget TradingView nie daje pełnej kontroli nad własnymi markerami/poziomami na świecach; do tego potrzebna byłaby później własna warstwa wykresu / Charting Library + własny feed.
+## Upgrade
+1. Wgraj ZIP do root repo.
+2. W Apps Script zastąp Kod.gs plikiem Bridge v3.
+3. Uruchom setupPrivate().
+4. Wdróż nową wersję istniejącego Web App.
+5. Zachowaj ten sam /exec URL.
+6. W NEON: SYSTEM > TEST FEED.

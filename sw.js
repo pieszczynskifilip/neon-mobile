@@ -1,4 +1,4 @@
-const CACHE='neon-mobile-v2.0.0';
+const CACHE='neon-mobile-v3.0.0';
 const STATIC=['./manifest.json','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',e=>{
   self.skipWaiting();

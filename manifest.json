@@ -6,7 +6,7 @@
   "display": "standalone",
   "background_color": "#071014",
   "theme_color": "#071014",
-  "description": "NEON OS cockpit with Market Core, live TradingView layer and AI Prediction Ledger intelligence.",
+  "description": "NEON OS v3: mobile market terminal with watchlist, custom chart, Desk intelligence and Prediction Ledger.",
   "icons": [
     {
       "src": "icon-192.png",
